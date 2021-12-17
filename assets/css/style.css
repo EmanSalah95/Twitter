@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #15202b;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.primary-btn {
+  background-color: #1d9bf0;
+  border-radius: 25px;
+  height: 50px;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header .logo .fa-twitter {
+  font-size: 1.7rem;
+  border-radius: 40px;
+  padding: 14px 15px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+header .logo .fa-twitter:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+header ul {
+  padding-top: 5px;
+}
+
+header ul li {
+  list-style: none;
+  padding: 1rem 0;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+header ul li:last-child {
+  padding: 0;
+}
+
+header ul li a,
+header ul li button {
+  border-radius: 40px;
+  padding: 12px 20px 12px 15px;
+  transition: background-color 0.2s;
+}
+
+header ul li:hover a,
+header ul li:hover button {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+header ul li i {
+  padding-right: 16px;
+}
+
+header .tweet-btn {
+  width: 90%;
+  font-weight: bold;
+  margin: 10px 0;
+  transition: background-color 0.2s;
+}
+
+header .tweet-btn:hover {
+  background-color: #177cc0;
+}
+
+header .profile {
+  display: flex;
+  margin: 0 20px 15px 0;
+  position: relative;
+  cursor: pointer;
+  border-radius: 40px;
+  padding: 12px 40px 7px 12px;
+  transition: background-color 0.3s;
+}
+
+header .profile:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+header .profile .profile-picture {
+  padding-right: 10px;
+}
+
+header .profile .profile-picture img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+header .profile .full-name {
+  font-weight: 600;
+}
+
+header .profile .username {
+  color: #8899a6;
+}
+
+header .profile .fa-ellipsis-h {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Homepage */
+.homepage {
+}
+
+/* Sidebar */
+
+.sidebar {
+  padding: 5px 0 0 2%;
+}
+
+.sidebar .search-bar {
+  position: fixed;
+  top: 0;
+  right: 10%;
+  width: 25%;
+  padding: 5px;
+  /* background-color: rgba(21, 32, 43, 0.75); */
+  background-color: rgb(21, 32, 43);
+  z-index: 1;
+}
+
+.sidebar .search-bar .fa-search {
+  position: absolute;
+  top: 30%;
+  left: 6%;
+  color: #8899a6;
+}
+
+.sidebar .search-bar input {
+  width: 100%;
+  height: 40px;
+  background-color: #253341;
+  border: none;
+  border-radius: 25px;
+  padding: 0 55px;
+  color: #fff;
+}
+
+.sidebar .search-bar input::placeholder {
+  color: #8899a6;
+}
+
+.sidebar .search-bar input:focus {
+  background-color: #15202b;
+  outline: 1px solid #1d9bf0;
+}
+
+.sidebar .search-bar input:focus + .fa-search {
+  color: #1d9bf0;
+}
+
+.sidebar .content {
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 15px;
+}
+
+.sidebar .content .news {
+  border-radius: 20px;
+  width: 100%;
+  background-color: #253341;
+  padding: 15px;
+}

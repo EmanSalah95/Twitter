@@ -1,0 +1,28 @@
+.container {
+  max-width: 80%;
+}
+
+header {
+  position: fixed;
+  width: 16%;
+  height: 100vh;
+  left: 10%;
+}
+
+main {
+  position: absolute;
+  right: 10%;
+  left: 26%;
+}
+
+main .homepage {
+  width: 60%;
+  border: 1px solid #38444d;
+}
+
+main .sidebar {
+  width: 40%;
+  float: right;
+  position: sticky;
+  bottom: 0;
+}
