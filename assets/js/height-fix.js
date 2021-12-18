@@ -3,9 +3,5 @@ var homepageHeight = homepageDiv.offsetHeight;
 var sidebarDiv = document.getElementById('sidebar');
 var sidebarHeight = sidebarDiv.offsetHeight;
 
-var documentHeight = window.pageYOffset + window.innerHeight;
-
+// Remove sidebar height from the homepage height
 homepageDiv.style.height = homepageHeight - sidebarHeight + 'px';
-
-// console.log(homepageDiv.offsetHeight);
-// console.log(sidebarDiv.offsetHeight);
