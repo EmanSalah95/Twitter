@@ -62,7 +62,6 @@ header ul li {
   list-style: none;
   padding: 1rem 0;
   font-size: 1.3rem;
-  cursor: pointer;
 }
 
 header ul li:last-child {
@@ -71,13 +70,14 @@ header ul li:last-child {
 
 header ul li a,
 header ul li button {
+  cursor: pointer;
   border-radius: 40px;
   padding: 12px 20px 12px 15px;
   transition: background-color 0.2s;
 }
 
-header ul li:hover a,
-header ul li:hover button {
+header ul li a:hover,
+header ul li button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -157,19 +157,21 @@ header .profile .fa-ellipsis-h {
 
 .sidebar .search-bar .fa-search {
   position: absolute;
-  top: 30%;
-  left: 6%;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
   color: #8899a6;
 }
 
 .sidebar .search-bar input {
   width: 100%;
-  height: 40px;
+  height: 45px;
   background-color: #253341;
   border: none;
   border-radius: 25px;
-  padding: 0 55px;
+  padding: 0 3.4rem;
   color: #fff;
+  font-size: 0.9rem;
 }
 
 .sidebar .search-bar input::placeholder {
