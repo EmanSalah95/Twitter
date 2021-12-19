@@ -9,7 +9,17 @@
       "commentsNum":0,
       "likesNum":0,
       "retweetsNum":0,
-      "user": "1",
+      "user": {
+        "id": "3",
+        "userName": "Heba@Ghazali",
+        "name": "Heba Ghazali",
+        "email":"Heba@Ghazali.com",
+        "password":"12345678",
+        "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "bio":"Front-End developer Engineer .",
+        "following":0,
+        "followers":0
+      },
       "comments":[],
       "usersLikes":[]
     },
@@ -22,7 +32,17 @@
         "commentsNum":0,
         "likesNum":0,
         "retweetsNum":0,
-        "user": "2",
+        "user":{
+          "id": "4",
+          "userName": "Raghda@Raghda",
+          "name": "Raghda",
+          "email":"Raghda@Raghda.com",
+          "password":"123456789",
+          "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+          "bio":"Front-End developer Engineer .",
+          "following":0,
+          "followers":0
+        },
         "comments":[],
         "usersLikes":[]
       },
@@ -35,7 +55,17 @@
         "commentsNum":0,
         "likesNum":0,
         "retweetsNum":0,
-        "user": "3",
+        "user":{
+          "id": "1",
+          "userName": "Eman@Salah",
+          "name": "Eman Salah",
+          "email":"Eman@gmail.com",
+          "password":"123456",
+          "img":"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+          "bio":"Front-End developer .",
+          "following":0,
+          "followers":0
+        },
         "comments":[],
         "usersLikes":[]
       }
@@ -49,7 +79,17 @@
         "commentsNum":0,
         "likesNum":0,
         "retweetsNum":0,
-        "user": "4",
+        "user": {
+          "id": "2",
+          "userName": "Esraa@Sayed",
+          "name": "Esraa Sayed",
+          "email":"Esraa@Sayed.com",
+          "password":"1234567",
+          "img":"https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+          "bio":"Front-End developer Engineer .",
+          "following":0,
+          "followers":0
+        },
         "comments":[],
         "usersLikes":[]
       }
@@ -63,7 +103,17 @@
         "commentsNum":0,
         "likesNum":0,
         "retweetsNum":0,
-        "user": "1",
+        "user": {
+          "id": "1",
+          "userName": "Eman@Salah",
+          "name": "Eman Salah",
+          "email":"Eman@gmail.com",
+          "password":"123456",
+          "img":"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+          "bio":"Front-End developer .",
+          "following":0,
+          "followers":0
+        },
         "comments":[],
         "usersLikes":[]
       }

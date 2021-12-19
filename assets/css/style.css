@@ -367,3 +367,44 @@ header .profile .fa-ellipsis-h {
 .settings-btn:hover {
   background-color: #1d9cf017;
 }
+/******************************************** loading ********************/
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width:100%;
+  height: 40px;
+  padding: 0px 45%;
+}
+.hidden{
+  display: none;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: 8px;
+  border: 3px solid #1d9bf0;
+  border-radius:50%;
+  animation: lds-ring 0.7s linear infinite;
+  border-color: #1d9bf0 #1d9cf017 #1d9cf017 #1d9cf017;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  -o-border-radius:50%;
+  -webkit-animation: lds-ring 0.7s linear infinite;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
+  100% {
+    transform: rotate(360deg);
+  }
+}
