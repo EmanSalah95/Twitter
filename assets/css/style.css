@@ -199,3 +199,171 @@ header .profile .fa-ellipsis-h {
   background-color: #253341;
   padding: 15px;
 }
+
+#home-header{
+  z-index: 1;
+  background-color: transparent;
+  background-color: #15202bbf;
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0%;
+}
+#write-header{
+  padding-left: 2%;
+  padding-top: 2%;
+  background-color: transparent;
+  border-style: none;
+  color: white;
+  font-size: 22px;
+  width: 80%;
+  height: auto;
+  z-index: -1;
+}
+#write-header::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+#write-header:focus{
+  outline-style: none;
+	box-shadow: none;
+}
+#upload-list ul{
+  list-style: none;
+  float: left;
+}
+#upload-list ul li{
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+}
+
+#upload-list ul li:hover{
+  background-color: #1d9cf017;
+}
+#upload-list ul li svg{
+  width:20px;
+  fill: #1d9bf0;
+  display: block;
+  margin:20% auto;
+}
+#tweet-btn{
+  float: right;
+  font-size: 20px;
+  width: 20%;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #1d9bf0;
+}
+#tweet-btn:hover{
+  background-color: #177cc0;
+}
+#post-footer>button{
+  width: 25%;
+  margin: 1% 6%;
+  font-size: 15px;
+  color: white;
+  opacity: 0.5;
+  display:flex;
+}
+#post-footer>button>i{
+  border-radius: 50%;
+  padding: 8px;
+}
+
+#reply-btn #retweet-btn #like-btn #share-btn:hover i,label{
+  padding: 8px;
+}
+
+#reply-btn:hover{
+  color: #1d9bf0;
+  opacity: 1;
+}
+#reply-btn:hover i{
+  background-color: #1d9cf017;
+}
+#retweet-btn:hover{
+  color: #06996C;
+  opacity: 1;
+}
+#retweet-btn:hover i{
+  background-color: #192f369a;
+}
+#like-btn:hover{
+  color: #CC2275;
+  opacity: 1;
+}
+#like-btn:hover i{
+  background-color: #2f2438c2;
+}
+#share-btn:hover{
+  color: #1d9bf0;
+  opacity: 1;
+}
+#share-btn:hover i{
+  background-color: #1d9cf017;
+}
+#timeline-options-btn{
+  float: right;
+  border-radius: 50%; 
+  width: 35px;
+  margin-top: 1%;
+  cursor: pointer;
+}
+#options-svg{
+  width:20px; 
+  fill: white;
+}
+#timeline-options-btn:hover{
+  background-color: #ffffff1a;
+}
+.post-container{
+  padding: 2%;
+  border-bottom:1px solid #38444d;
+  width: 100%;
+
+}
+.post-container:hover{
+  background-color: #1B2631;
+}
+.logged-user-image{
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+.name-username-style{
+  padding-left:2%; 
+  font-size: 15px;
+  float: left;
+}
+.name-username-style:hover{
+  text-decoration: underline;
+}
+.post-article{
+  clear: both;
+  padding-left:2% ;
+  font-size: 15px;
+  line-height: 1.2rem;
+}
+.post-media{
+  padding-top: 2%;
+  width:100%
+}
+.settings-btn{
+  border-radius: 50%; 
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  color: #8899a6;
+  margin-top: 1%;
+  cursor: pointer;float: right;
+}
+.settings-btn:hover i{
+  color: #1d9bf0;
+  opacity: 1;
+}
+.settings-btn:hover {
+  background-color: #1d9cf017;
+}
