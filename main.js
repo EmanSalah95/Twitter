@@ -132,14 +132,16 @@ function addPost() {
 
 function displayPosts(posts) {
   document.getElementsByClassName("lds-ring")[0].classList.add("hidden"); // to hide indicator //.remove("hidden") change it back
+  var i=0;
   posts.forEach((post) => {
     console.log(post.user);
     document.getElementsByClassName("homepage")[0].innerHTML += `
-    <div class="post-container">
+    <div id=${i} class="post-container">
+         <label class="user-id" style="display:none">${post.user.id}</label>
           <div>
-            <img class="logged-user-image" src=${post.user.img} />
-            <h6 class="name-username-style">${post.user.name}</h6>
-            <span class="name-username-style">@${post.user.userName}</span>
+          <img class="logged-user-image onmouseenter=${'displayCard(event)'}" src=${post.user.img} />
+          <h6 class="name-username-style" onmouseenter=${'displayCard(event)'}>${post.user.name}</h6>
+          <span class="name-username-style" onmouseenter=${'displayCard(event)'}>@${post.user.userName}</span>
             <button title="More"class="settings-btn"><i class="fas fa-ellipsis-h"></i></button>
           </div>
           ${post.text && `<article class="post-article">${post.text}</article>`}
@@ -163,5 +165,51 @@ function displayPosts(posts) {
           </footer>
         </div>
     `;
+    i++;
   });
+}
+
+function displayCard(e) {
+  var selectedPost = document.getElementById(e.target.parentElement.parentElement.id); 
+  var userID = (selectedPost.getElementsByClassName("user-id")[0].innerText); //to get user id from hidden label
+  // var user = getUser(userID);
+  
+  req.open("GET", url + "/users/" + userID);
+  req.send();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        user = JSON.parse(req.responseText);
+        // console.log(user)
+        setTimeout(function(){
+          var card=document.createElement("div");
+        card.setAttribute("id","card-id")
+        card.setAttribute("class","profile-card");
+        card.style.padding="2%";
+        card.style.display="block";
+        card.innerHTML=
+      `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;">
+            <img id="selected-user-img" class="logged-user-image" src=${user.img}/>
+            <h6 id="selected-user-name" class="name-username-style">${user.name}</h6>
+            <span id="selected-user-username" class="name-username-style"style="color:#8899A6;">${user.userName}</span>
+        </div>
+        <button class="card-follow-btn">
+        Follow
+        </button>
+        <p id="selected-user-bio" style="clear: both;padding: 8% 0%;line-height: 1.5em;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius nisi repudiandae 4
+            eligendi quibusdam rem, ut sapiente aliquid aliquam tempore exercitationem
+        </p>
+        <div>
+            <h4 id="selected-user-following" style="float: left;margin-right: 10%;">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
+            <h4 id="selected-user-followers">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
+        </div>`
+        selectedPost.appendChild(card);
+        card.onmouseleave=function(){
+            selectedPost.removeChild(card);      
+        }      
+        },500);
+      }
+    }
+  };
 }
