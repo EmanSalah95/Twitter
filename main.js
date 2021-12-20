@@ -34,7 +34,8 @@ var postOb = {
   comments: [],
   usersLikes: [],
 };
-async function  loadPage() {
+ function  loadPage() {
+  localStorage.setItem("currentUser","1");
   getCurrentUser(localStorage.getItem("currentUser"));
 }
 
