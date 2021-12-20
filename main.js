@@ -18,6 +18,7 @@ var userOb = {
   name: "Eman Salah",
   password: "123456",
   userName: "Eman@Salah",
+  img:"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
 };
 
 var postOb = {
@@ -33,6 +34,33 @@ var postOb = {
   comments: [],
   usersLikes: [],
 };
+async function  loadPage() {
+  getCurrentUser(localStorage.getItem("currentUser"));
+}
+
+function getCurrentUser(id) {
+  req.open("GET", url + "/users/" + id);
+  req.send();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        user = JSON.parse(req.responseText);
+        console.log("user>>>>>>>", user);
+        console.log("**",user);
+        getPosts();
+        displayAddTweet(user);
+      }
+    } else {
+      console.log("somethingwent wrong",req.readyState);
+     }
+  };
+}
+
+function displayAddTweet(user) {
+  document.getElementById('profile').src=user.img;
+
+  
+}
 
 function getPosts() {
   req.open("GET", url + "/posts");
@@ -117,7 +145,7 @@ function displayPosts(posts) {
           ${post.image && `<img class="post-media" src=${post.image}/>`} 
           ${
             post.video &&
-            `<video class="post-media" controls autoplay src="./assets/videos/production ID_4662765.mp4"></video>`
+            `<iframe width="560" height="315" src="https://www.youtube.com/embed/-p1P4fdhaF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
           } 
           <footer id="post-footer" style="display: flex;">
             <button id="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${

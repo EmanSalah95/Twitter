@@ -19,7 +19,7 @@
 
     <title>Twitter</title>
   </head>
-  <body onload="getPosts()">
+  <body onload="loadPage()">
     <header>
       <div>
         <div class="logo"><i class="fab fa-twitter"></i></div>
@@ -70,7 +70,7 @@
     <main>
       <!-- Homepage -->
 
-      <section class="homepage" style="font-size: 2rem;line-height: 3rem;position: relative;">
+      <section class="homepage" id='homepage' style="font-size: 2rem;line-height: 3rem;position: relative;">
         <div id="home-header">
           <!-- home label -->
           <span style="padding-left: 2%; font-size: 20px;font-weight: bold;cursor: pointer;">Home</span>
@@ -89,7 +89,7 @@
         <div style="border-bottom:1px solid #38444d;display: flex;">
           <!-- logged in user image -->
           <div style="padding-left: 2%;">
-            <img style="border-radius: 50%;width: 60px;height: 60px;" src="./assets/images/profile-picture.png" />
+            <img id='profile' style="border-radius: 50%;width: 60px;height: 60px;" src="./assets/images/profile-picture.png" />
           </div>
           <div style="width: 85%;">
             <input id="write-header" type="text" placeholder="What's happening?" />
