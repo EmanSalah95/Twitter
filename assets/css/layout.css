@@ -10,16 +10,15 @@ main {
   position: absolute;
   right: 10%;
   left: 26%;
+  display: flex;
 }
 
 main .homepage {
   width: 60%;
+  border: 1px solid #38444d;
 }
 
 main .sidebar {
   width: 40%;
-  float: right;
-  position: sticky;
-  bottom: 0;
-  border-left: 1px solid #38444d;
+  padding: 5px 0 0 3%;
 }
