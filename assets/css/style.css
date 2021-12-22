@@ -287,8 +287,8 @@ header .profile .fa-ellipsis-h {
   width: 25%;
   margin-top: 4px;
   font-size: 15px;
-  color: white;
-  opacity: 0.5;
+  color: #8899a6;
+  opacity: 1;
   display: flex;
 }
 .post-footer > button > i {
@@ -314,19 +314,19 @@ label {
 .retweet-btn:hover i {
   background-color: #192f369a;
 }
-.like-btn:hover {
-  color: #cc2275;
-  opacity: 1;
-}
-.like-btn:hover i {
-  background-color: #2f2438c2;
-}
 .share-btn:hover {
   color: #1d9bf0;
   opacity: 1;
 }
 .share-btn:hover i {
   background-color: #1d9cf017;
+}
+.post-footer>button[id^="like-btn-"]:hover{
+  color: #CC2275;
+  opacity: 1;
+}
+.post-footer>button[id^="like-btn-"]:hover i{
+  background-color: #2f2438c2;
 }
 #timeline-options-btn {
   float: right;
@@ -459,7 +459,14 @@ label {
 #selected-user-followers:hover {
   text-decoration: underline;
 }
-
+.liked-post-style>i{
+  color: #CC2275;
+  opacity: 1;
+}
+.liked-post-style>label{
+  color: #CC2275;
+  opacity: 1;
+}
 .logged-user-image {
   height: 50px;
   width: 50px;
