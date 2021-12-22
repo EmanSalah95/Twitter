@@ -263,8 +263,8 @@ header .profile .fa-ellipsis-h {
   width: 25%;
   margin: 1% 6%;
   font-size: 15px;
-  color: white;
-  opacity: 0.5;
+  color: #8899a6;
+  opacity: 1;
   display:flex;
 }
 #post-footer>button>i{
@@ -290,11 +290,11 @@ header .profile .fa-ellipsis-h {
 #retweet-btn:hover i{
   background-color: #192f369a;
 }
-#like-btn:hover{
+#post-footer>button[id^="like-btn-"]:hover{
   color: #CC2275;
   opacity: 1;
 }
-#like-btn:hover i{
+#post-footer>button[id^="like-btn-"]:hover i{
   background-color: #2f2438c2;
 }
 #share-btn:hover{
@@ -405,6 +405,17 @@ header .profile .fa-ellipsis-h {
 }
 #selected-user-followers:hover{
   text-decoration: underline;
+}
+.liked-post-style>i{
+  color: #CC2275;
+  opacity: 1;
+}
+.liked-post-style>label{
+  color: #CC2275;
+  opacity: 1;
+}
+.disliked-post-style{
+  /* color: transparent; */
 }
 /******************************************** loading ********************/
 .lds-ring {
