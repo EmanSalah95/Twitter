@@ -326,6 +326,7 @@ header .profile .fa-ellipsis-h {
 }
 .post-container:hover{
   background-color: #1B2631;
+  cursor: pointer;
 }
 .logged-user-image{
   border-radius: 50%;
@@ -446,4 +447,88 @@ header .profile .fa-ellipsis-h {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* users to follow */
+.users-section{
+  width: 100%;
+  border-bottom: 1px solid #38444d;
+}
+.section-title{
+  font-size:18px;
+  padding: 5px 10px;
+}
+
+.section-user{
+  display: flex;
+  margin: 5px 0; 
+  width: 100%;
+  padding: 5px 10px;
+
+}
+
+.section-user:hover{
+  background-color: #1B2631;
+  cursor: pointer;
+}
+
+.user-image{
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+}
+.follow-btn{
+  background-color: rgb(239, 243, 244);
+  font-size:16px;
+  line-height: 10px;
+  color: #38444d;
+  padding: 6px 9px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.unfollow-btn{
+  background-color:transparent;
+  color: white;
+  border:0.5px solid white;
+  font-size:16px;
+  line-height: 10px;
+
+}
+.follow-btn:hover{
+  background-color: rgb(215,219,220);
+}
+
+.unfollow-btn:hover{
+  color: #E5212E;
+  border:0.5px solid #E5212E;
+  content: 'unfollow';
+  background-color: #322632;
+
+}
+
+.user-name{
+  line-height: 19px;
+  font-size:15px;
+}
+.op{
+  color:rgb(118, 118, 118);
+}
+
+.mb{
+  margin-bottom: 15px;
+}
+
+.user-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.moreFollowers{
+  color: #177cc0;
+  font-size: 18px;
+  margin-left: 5px;
 }

@@ -37,6 +37,9 @@ var postOb = {
  function  loadPage() {
   localStorage.setItem("currentUser","1");
   getCurrentUser(localStorage.getItem("currentUser"));
+  setTimeout(()=>{
+    getUsers();
+  }, 1000);
 }
 
 function getCurrentUser(id) {
@@ -83,7 +86,7 @@ function getUsers() {
     if (req.readyState == 4) {
       if (req.status == 200) {
         users = JSON.parse(req.responseText);
-        console.log("users", users);
+        console.log("users===========================", users);
       }
     }
   };
@@ -167,6 +170,7 @@ function displayPosts(posts) {
     `;
     i++;
   });
+  setTimeout(()=>{displayUsers()},1000);
 }
 
 function displayCard(e) {
@@ -212,4 +216,49 @@ function displayCard(e) {
       }
     }
   };
+}
+
+function displayUsers() {
+  console.log("********users in display********");
+  var usersEl=document.createElement('section');
+  usersEl.classList.add('users-section');
+  usersEl.id='usersMain';
+  usersEl.innerHTML=`<p class="section-title">Who to follow</p>`
+  document.getElementById('homepage').appendChild(usersEl);
+  var usersList=users.slice(0,3);//get first 3 users
+  usersList.forEach( user=>{
+    var userEl=document.createElement('div');
+    userEl.classList.add('section-user');
+    userEl.innerHTML=`
+    <img class="user-image" src=${user.img} />
+    <div style="width: 90%">
+      <div class="user-item">
+          <div style="padding-left: 2%;">
+            <h6 class="user-name">${user.name} </h6>
+            <h6 class="user-name op">@${user.userName} </h6>
+          </div>
+          <button onclick="toggleFollow(event)" class="follow-btn">follow</button>
+        </div>
+        <p class="post-article mb">${user.bio} </p>
+      </div>
+    </div>
+    `;
+    usersEl.appendChild(userEl);
+  })
+  usersEl.innerHTML+=`<div class="section-user"> <p class='moreFollowers'>more</p></div>`;
+  document.getElementById('asideUsers').appendChild(usersEl);
+}
+
+function toggleFollow(e) {
+  console.log(e.target.innerHTML);
+  var btn=e.target;
+  console.log(btn.innerHTML);
+  if (btn.innerHTML=='follow') {
+    btn.innerHTML='following';
+    btn.classList.add('unfollow-btn');  
+  } else {
+    btn.innerHTML='follow';
+    btn.classList.remove('unfollow-btn');
+  }
+  
 }
