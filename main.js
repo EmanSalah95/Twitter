@@ -131,7 +131,6 @@ function addPost() {
     console.log('>>>>>>>>>error', error);
   }
 }
-// var uID = 0;
 
 function displayPosts(posts) {
   document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back

@@ -13,7 +13,7 @@ main {
   display: flex;
 }
 
-main .homepage {
+main .homepage,.bookmarkspage {
   width: 60%;
   border: 1px solid #38444d;
 }

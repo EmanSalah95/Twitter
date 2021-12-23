@@ -82,7 +82,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 4,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "2",
@@ -97,10 +97,8 @@
       },
       "comments": [],
       "usersLikes": [
-        2,
         4,
-        0,
-        1
+        0
       ]
     },
     {
