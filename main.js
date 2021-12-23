@@ -143,7 +143,9 @@ function displayPosts(posts) {
          <label class="users-likes" style="display:none">${
            post.usersLikes
          }</label>
-
+         <label class="users-retweets" style="display:none">${
+          post.usersRetweets
+        }</label>
           <img class="logged-user-image profile-img" onmouseover=${'displayCard(event)'} src=${
       post.user.img
     } alt="profile-img"/>
@@ -186,7 +188,7 @@ function displayPosts(posts) {
             <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
               post.commentsNum
             }</label></button>
-            <button class="retweet-btn" title="Retweet"><i class="fas fa-retweet"></i><label>${
+            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick=${'retweetPost(event)'}><i class="fas fa-retweet"></i><label class="retweets-num">${
               post.retweetsNum
             }</label></button>
             <button class="like-btn" id="like-btn-${i}" title="Like" onclick=${'likePost(event)'}><i class="fas fa-heart"></i><label class="likes-num">${
@@ -203,10 +205,20 @@ function displayPosts(posts) {
     if (post.usersLikes.includes(parseInt(user.id))) {
       var like = document.getElementById(`like-btn-${i}`);
       like.classList.add('liked-post-style');
+      like.title="dislike";
     } else {
       var like = document.getElementById(`like-btn-${i}`);
       like.classList.remove('liked-post-style');
     }
+    
+    var retweet = document.getElementById(`retweet-btn-${i}`);
+    if (post.usersRetweets.includes(parseInt(user.id))) {
+      retweet.classList.add('retweeted-post-style');
+      retweet.title="Undo Retweet";
+    } else {
+      retweet.classList.remove('retweeted-post-style');
+    }
+
     i++;
   });
   setTimeout(() => {
@@ -351,7 +363,52 @@ function likePost(e) {
   };
   req.send(jsonPost);
 }
+function retweetPost(e){
+  var retweetedPost = document.getElementById(
+    e.target.parentElement.parentElement.parentElement.parentElement.id
+  ); //selected post
+  var isRetweeted = document.getElementById(e.target.parentElement.id); //retweet btn id
+  console.log(isRetweeted);
+  var usersRetweetStr =
+  retweetedPost.getElementsByClassName('users-retweets')[0].innerText; //get users that likes the post from html
+  var userRetweetsArrStr = [];
+  if (usersRetweetStr != '') {
+    userRetweetsArrStr = usersRetweetStr.split(',');
+  }
+  var retweetsNumStr = retweetedPost.getElementsByClassName('retweets-num')[0].innerText; //get users that likes the post from html
+  var retweetsNum = parseInt(retweetsNumStr);
 
+  var p = {};
+  p.usersRetweets = userRetweetsArrStr.map(Number); //convert array from string to numbers
+  if (isRetweeted.classList.contains('retweeted-post-style')) {
+    //user dislikes post
+    isRetweeted.classList.remove('retweeted-post-style');
+    p.retweetsNum = retweetsNum - 1;
+    const index = p.usersRetweets.indexOf(parseInt(user.id));
+    if (index > -1) {
+      p.usersRetweets.splice(index, 1);
+    }
+  } //user likes post
+  else {
+    isRetweeted.classList.add('retweeted-post-style');
+    p.retweetsNum = retweetsNum + 1;
+    p.usersRetweets.push(parseInt(user.id));
+  }
+
+  var jsonPost = JSON.stringify(p);
+  console.log(jsonPost);
+  req.open('PATCH', url + '/posts/' + retweetedPost.id);
+  req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+  req.onreadystatechange = function () {
+    var po = JSON.parse(req.responseText);
+    if (req.readyState == 4 && req.status == '200') {
+      console.log(po);
+    } else {
+      console.log(po);
+    }
+  };
+  req.send(jsonPost);
+}
 function addPost(inputId) {
   var text=document.getElementById(inputId).value;
   var lastPostId=parseInt(posts[posts.length-1].id);
