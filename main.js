@@ -131,7 +131,6 @@ function addPostReq(_postOb) {
     console.log('>>>>>>>>>error', error);
   }
 }
-var uID = 0;
 
 function displayPosts(posts) {
   document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
@@ -201,7 +200,7 @@ function displayPosts(posts) {
            </div>
         </div>
     `;
-    if (post.usersLikes.includes(uID)) {
+    if (post.usersLikes.includes(parseInt(user.id))) {
       var like = document.getElementById(`like-btn-${i}`);
       like.classList.add('liked-post-style');
     } else {
@@ -323,11 +322,11 @@ function likePost(e) {
 
   var p = {};
   p.usersLikes = userLikesArrStr.map(Number); //convert array from string to numbers
-  if (isLiked.className == 'liked-post-style') {
+  if (isLiked.classList.contains('liked-post-style')) {
     //user dislikes post
     isLiked.classList.remove('liked-post-style');
     p.likesNum = likesNum - 1;
-    const index = p.usersLikes.indexOf(uID);
+    const index = p.usersLikes.indexOf(parseInt(user.id));
     if (index > -1) {
       p.usersLikes.splice(index, 1);
     }
@@ -335,7 +334,7 @@ function likePost(e) {
   else {
     isLiked.classList.add('liked-post-style');
     p.likesNum = likesNum + 1;
-    p.usersLikes.push(uID);
+    p.usersLikes.push(parseInt(user.id));
   }
 
   var jsonPost = JSON.stringify(p);

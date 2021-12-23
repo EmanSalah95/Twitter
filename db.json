@@ -7,7 +7,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 2,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "3",
@@ -22,7 +22,6 @@
       },
       "comments": [],
       "usersLikes": [
-        0,
         0
       ]
     },
@@ -33,7 +32,7 @@
       "video": "",
       "image": "https://images.unsplash.com/photo-1639771359448-e90840f3eec8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       "commentsNum": 0,
-      "likesNum": 3,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "4",
@@ -48,9 +47,7 @@
       },
       "comments": [],
       "usersLikes": [
-        4,
-        0,
-        0
+        4
       ]
     },
     {
@@ -60,7 +57,7 @@
       "video": "https://www.youtube.com/watch?v=xozNnytRE6E",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 3,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "1",
@@ -75,9 +72,7 @@
       },
       "comments": [],
       "usersLikes": [
-        0,
-        0,
-        0
+        1
       ]
     },
     {
@@ -87,7 +82,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 2,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "2",
@@ -102,8 +97,8 @@
       },
       "comments": [],
       "usersLikes": [
-        2,
-        4
+        4,
+        0
       ]
     },
     {
