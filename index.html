@@ -19,7 +19,7 @@
 
     <title>Twitter</title>
   </head>
-  <body onload="loadPage()">
+  <body onload="loadPage('home')">
     <header>
       <div>
         <div class="logo"><i class="fab fa-twitter"></i></div>
@@ -55,12 +55,12 @@
 
       <div class="profile">
         <div class="profile-picture">
-          <img src="assets/images/profile-picture.png" alt="Profile Picture" />
+          <img id='aside-profile' src="assets/images/profile-picture.png" alt="Profile Picture" />
         </div>
 
         <div class="name">
-          <p class="full-name">Name</p>
-          <p class="username">@username</p>
+          <p class="full-name" id='aside-name'></p>
+          <p class="username" id='aside-user-name'></p>
         </div>
 
         <i class="fas fa-ellipsis-h"></i>

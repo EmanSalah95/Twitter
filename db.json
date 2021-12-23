@@ -106,7 +106,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 2,
+      "likesNum": 3,
       "retweetsNum": 0,
       "user": {
         "id": "1",
@@ -122,7 +122,8 @@
       "comments": [],
       "usersLikes": [
         2,
-        4
+        4,
+        1
       ]
     },
     {

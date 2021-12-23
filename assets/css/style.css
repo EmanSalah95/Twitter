@@ -606,3 +606,23 @@ label {
   font-size: 14px;
   padding: 10px 0;
 }
+
+.back-btn {
+  font-size: 10px;
+  border-radius: 50%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
