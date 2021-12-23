@@ -22,15 +22,15 @@ var userOb = {
 };
 
 var postOb = {
-  id: 1,
-  createdAt: '2021-12-12T10:36:15.425Z',
-  text: 'my post text ',
-  video: 'url',
-  image: 'url',
+  id: '',
+  createdAt: '',
+  text: '',
+  video: '',
+  image: '',
   commentsNum: 0,
   likesNum: 0,
   retweetsNum: 0,
-  user: '1',
+  user: {},
   comments: [],
   usersLikes: [],
 };
@@ -97,7 +97,7 @@ function getUser(id) {
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
-        user = JSON.parse(req.responseText);
+        // user = JSON.parse(req.responseText);
         console.log('user>>>>>>>', user);
         return user;
       }
@@ -107,13 +107,13 @@ function getUser(id) {
   };
 }
 
-function addPost() {
-  req.open('POST', url);
-  console.log(JSON.stringify(postOb));
+function addPostReq(_postOb) {
+  req.open('POST', url+'/posts');
+  console.log(JSON.stringify(_postOb));
   req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
   try {
-    req.send(JSON.stringify(postOb));
+    req.send(JSON.stringify(_postOb));
     req.onreadystatechange = () => {
       console.log('on state change', req);
 
@@ -231,7 +231,7 @@ function displayCard(e) {
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
-        user = JSON.parse(req.responseText);
+       var user = JSON.parse(req.responseText);
         // console.log(user)
         setTimeout(function () {
           var card = document.createElement('div');
@@ -351,4 +351,19 @@ function likePost(e) {
     }
   };
   req.send(jsonPost);
+}
+
+function addPost(inputId) {
+  var text=document.getElementById(inputId).value;
+  var lastPostId=parseInt(posts[posts.length-1].id);
+  console.log(lastPostId);
+  var newPost={...postOb};//copy in new ob to keep the original values mutable
+  newPost.user=user;
+  newPost.text=text;
+  newPost.id=(++lastPostId).toString();
+  newPost.createdAt=new Date();
+  posts.push(newPost);
+  console.log("old",postOb);
+  console.log("new",newPost);
+  addPostReq(newPost);
 }
