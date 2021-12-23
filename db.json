@@ -7,7 +7,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 1,
+      "likesNum": 0,
       "retweetsNum": 0,
       "user": {
         "id": "3",
@@ -21,9 +21,7 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [
-        0
-      ]
+      "usersLikes": []
     },
     {
       "id": "2",
@@ -125,6 +123,32 @@
       "usersLikes": [
         2,
         4
+      ]
+    },
+    {
+      "id": "6",
+      "createdAt": "2021-12-23T17:42:51.423Z",
+      "text": "new post",
+      "video": "",
+      "image": "",
+      "commentsNum": 0,
+      "likesNum": 2,
+      "retweetsNum": 0,
+      "user": {
+        "id": "1",
+        "userName": "Eman@Salah",
+        "name": "Eman Salah",
+        "email": "Eman@gmail.com",
+        "password": "123456",
+        "img": "https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+        "bio": "Front-End developer .",
+        "following": 0,
+        "followers": 0
+      },
+      "comments": [],
+      "usersLikes": [
+        2,
+        3
       ]
     }
   ],
