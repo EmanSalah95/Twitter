@@ -467,6 +467,14 @@ label {
   color: #CC2275;
   opacity: 1;
 }
+.retweeted-post-style>i{
+  color: #06996c;
+  opacity: 1;
+}
+.retweeted-post-style>label{
+  color: #06996c;
+  opacity: 1;
+}
 .logged-user-image {
   height: 50px;
   width: 50px;
