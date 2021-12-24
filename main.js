@@ -1,31 +1,31 @@
 var req = new XMLHttpRequest();
-var url = "http://localhost:3000";
+var url = 'http://localhost:3000';
 var posts = [],
   users = [],
   user = {},
   post = {},
-  currentTweet={},
-  comments=[];
+  currentTweet = {},
+  comments = [];
 
 var postOb = {
-  id: "",
-  createdAt: "",
-  text: "",
-  video: "",
-  image: "",
+  id: '',
+  createdAt: '',
+  text: '',
+  video: '',
+  image: '',
   commentsNum: 0,
   likesNum: 0,
   retweetsNum: 0,
   user: {},
   comments: [],
   usersLikes: [],
-  usersRetweets: []
+  usersRetweets: [],
 };
 
 function loadPage(page) {
-  localStorage.setItem("currentUser", "1");
-  getUser(localStorage.getItem("currentUser"));//set global user object of current user 
-  if (page == "home") {
+  localStorage.setItem('currentUser', '1');
+  getUser(localStorage.getItem('currentUser')); //set global user object of current user
+  if (page == 'home') {
     setTimeout(() => {
       getPosts();
     }, 400);
@@ -37,21 +37,29 @@ function loadPage(page) {
     }, 500);
   }
 
-  if (page == "tweet") {
+  if (page == 'tweet') {
     displayTweetPage();
   }
 
-  if(page == "profilepage")
-  {
-    setTimeout(()=>{
+  if (page == 'profilepage') {
+    setTimeout(() => {
       displayProfile();
-    },400);
+    }, 400);
     setTimeout(() => {
       getPosts();
     }, 450);
     setTimeout(() => {
       displayPosts(posts);
     }, 500);
+  }
+
+  if (page == 'bookmarks') {
+    setTimeout(() => {
+      getPosts();
+    }, 400);
+    setTimeout(() => {
+      displayBookmarks();
+    }, 650);
   }
 
   setTimeout(() => {
@@ -66,18 +74,18 @@ function loadPage(page) {
 }
 
 function displayAddTweet() {
-  document.getElementById("profile").src = user.img;
+  document.getElementById('profile').src = user.img;
 }
 
 function displayAsideUser() {
-  console.log(user)
-  document.getElementById("aside-profile").src = user.img;
-  document.getElementById("aside-name").innerHTML = user.name;
-  document.getElementById("aside-user-name").innerHTML = user.userName;
+  console.log(user);
+  document.getElementById('aside-profile').src = user.img;
+  document.getElementById('aside-name').innerHTML = user.name;
+  document.getElementById('aside-user-name').innerHTML = user.userName;
 }
 
-function getPosts(condition='') {
-  req.open("GET", url + "/posts?"+condition); //GET /posts?id=1
+function getPosts(condition = '') {
+  req.open('GET', url + '/posts?' + condition); //GET /posts?id=1
   req.send();
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
@@ -88,55 +96,54 @@ function getPosts(condition='') {
   };
 }
 
-function getComments(condition='') {
-  req.open("GET", url + "/comments?"+condition); //GET /comments?id=1 >>>> only in tweet page
+function getComments(condition = '') {
+  req.open('GET', url + '/comments?' + condition); //GET /comments?id=1 >>>> only in tweet page
   req.send();
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
         comments = JSON.parse(req.responseText);
-        console.log("commmmmments",comments);
+        console.log('commmmmments', comments);
       }
     }
   };
 }
 
 function getPost(id) {
-  var url=`${url}/posts`;
-  req.open("GET", url + "/posts?id="+id);
+  var url = `${url}/posts`;
+  req.open('GET', url + '/posts?id=' + id);
   req.send();
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
         currentTweet = JSON.parse(req.responseText)[0];
-        console.log("tweeeet",currentTweet);
+        console.log('tweeeet', currentTweet);
       }
     }
   };
 }
 
-
 function getUsers() {
-  req.open("GET", url + "/users");
+  req.open('GET', url + '/users');
   req.send();
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
         users = JSON.parse(req.responseText); // all useres
-        console.log("users===========================", users);
+        console.log('users===========================', users);
       }
     }
   };
 }
 
 function getUser(id) {
-  req.open("GET", url + "/users/" + id);
+  req.open('GET', url + '/users/' + id);
   req.send();
   req.onreadystatechange = () => {
     if (req.readyState == 4) {
       if (req.status == 200) {
         user = JSON.parse(req.responseText);
-        console.log("user>>>>>>>", user);
+        console.log('user>>>>>>>', user);
       }
     } else {
       return undefined;
@@ -145,45 +152,45 @@ function getUser(id) {
 }
 
 function addPostReq(_postOb) {
-  req.open("POST", url + "/posts");
+  req.open('POST', url + '/posts');
   console.log(JSON.stringify(_postOb));
-  req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
   try {
     req.send(JSON.stringify(_postOb));
     req.onreadystatechange = () => {
-      console.log("on state change", req);
+      console.log('on state change', req);
 
       if (req.readyState == 4) {
         if (req.status == 200) {
           data = JSON.parse(req.responseText); // to convert json to opject
-          console.log("Done", data);
+          console.log('Done', data);
         } else {
-          console.log("error", req.responseText);
+          console.log('error', req.responseText);
         }
       }
     };
   } catch (error) {
-    console.log(">>>>>>>>>error", error);
+    console.log('>>>>>>>>>error', error);
   }
 }
 
 function displayPosts(_posts) {
-  document.getElementsByClassName("lds-ring")[0].classList.add("hidden"); // to hide indicator //.remove("hidden") change it back
+  document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
   var i = 0;
-  _posts.forEach((post) => {
-    document.getElementsByClassName("homepage")[0].innerHTML += `
+  _posts.forEach(post => {
+    document.getElementsByClassName('homepage')[0].innerHTML += `
     <div id=${post.id} class="post-container" onclick="goToPost(${post.id})" >
          <label class="user-id" style="display:none">${post.user.id}</label>
          <label class="users-likes" style="display:none">${
            post.usersLikes
          }</label>
          <label class="users-retweets" style="display:none">${
-          post.usersRetweets
-        }</label>
-          <img class="logged-user-image profile-img" onmouseover='displayCard(event,${post.user.id})' src=${
-      post.user.img
-    } alt="profile-img"/>
+           post.usersRetweets
+         }</label>
+          <img class="logged-user-image profile-img" onmouseover='displayCard(event,${
+            post.user.id
+          })' src=${post.user.img} alt="profile-img"/>
 
          
           <div class="post-content">
@@ -192,12 +199,16 @@ function displayPosts(_posts) {
     
         <div class="name-container">
         
-          <h6 class="name-style" onmouseover='displayCard(event,${post.user.id})'>${ post.user.name}</h6>
+          <h6 class="name-style" onmouseover='displayCard(event,${
+            post.user.id
+          })'>${post.user.name}</h6>
                   <span class="username-style">@${post.user.userName}</span>
         </div>
 
         <button title="More"class="settings-btn" onclick=${'HandleIconPost(event)'} ><i class="fas fa-ellipsis-h"></i></button>    </div>
-           ${post.text && `<article class="post-article">${post.text}</article>`}
+           ${
+             post.text && `<article class="post-article">${post.text}</article>`
+           }
           ${
             post.image &&
             `<img class="post-media" src=${post.image} alt="post-media"/>`
@@ -216,13 +227,19 @@ function displayPosts(_posts) {
             <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
               post.commentsNum
             }</label></button>
-            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${post.id},${user.id})"><i class="fas fa-retweet"></i><label class="retweets-num">${
-              post.retweetsNum
-            }</label></button>
-            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${post.id},${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
+            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${
+      post.id
+    },${user.id})"><i class="fas fa-retweet"></i><label class="retweets-num">${
+      post.retweetsNum
+    }</label></button>
+            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${
+      post.id
+    },${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
       post.likesNum
     }</label></button>
-            <button class="share-btn" title="Share" onclick='addBookmark(event,${post.id},${user.id})'><i class="fas fa-sign-out-alt"
+            <button class="share-btn" title="Share" onclick='addBookmark(event,${
+              post.id
+            },${user.id})'><i class="fas fa-sign-out-alt"
                 style="transform: rotate(-90deg);"></i></button>
           </footer>
 
@@ -233,16 +250,16 @@ function displayPosts(_posts) {
     if (post.usersLikes.includes(parseInt(user.id))) {
       var like = document.getElementById(`like-btn-${i}`);
       like.classList.add('liked-post-style');
-      like.title="dislike";
+      like.title = 'dislike';
     } else {
       var like = document.getElementById(`like-btn-${i}`);
-      like.classList.remove("liked-post-style");
+      like.classList.remove('liked-post-style');
     }
-    
+
     var retweet = document.getElementById(`retweet-btn-${i}`);
     if (post.usersRetweets.includes(parseInt(user.id))) {
       retweet.classList.add('retweeted-post-style');
-      retweet.title="Undo Retweet";
+      retweet.title = 'Undo Retweet';
     } else {
       retweet.classList.remove('retweeted-post-style');
     }
@@ -251,17 +268,17 @@ function displayPosts(_posts) {
   });
 }
 
-function displayCard(e,_id) {
+function displayCard(e, _id) {
   var selectedPost = document.getElementById(
     e.target.parentElement.parentElement.parentElement.parentElement.id
   );
   if (selectedPost == null)
     selectedPost = document.getElementById(e.target.parentElement.id);
-  var user=users[_id-1];
-  var card = document.createElement("div");
-  card.setAttribute("id", "card-id");
-  card.setAttribute("class", "profile-card");
-  card.style.display = "block";
+  var user = users[_id - 1];
+  var card = document.createElement('div');
+  card.setAttribute('id', 'card-id');
+  card.setAttribute('class', 'profile-card');
+  card.style.display = 'block';
   card.innerHTML = `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;" onclick="stopParentC">
     <img id="selected-user-img" class="logged-user-image" src=${user.img}/>
     <h6 id="selected-user-name" class="name-style">${user.name}</h6>
@@ -279,18 +296,17 @@ ${user.bio}
   card.onmouseleave = function () {
     selectedPost.removeChild(card);
   };
-
 }
 
 function displayUsers() {
-  console.log("********users in display********", users);
-  var usersEl = document.createElement("section");
-  usersEl.classList.add("users-section");
+  console.log('********users in display********', users);
+  var usersEl = document.createElement('section');
+  usersEl.classList.add('users-section');
   usersEl.innerHTML = `<p class="section-title">Who to follow</p>`;
   var usersList = users.slice(0, 3); //get first 3 users
-  usersList.forEach((user) => {
-    var userEl = document.createElement("div");
-    userEl.classList.add("section-user");
+  usersList.forEach(user => {
+    var userEl = document.createElement('div');
+    userEl.classList.add('section-user');
     userEl.innerHTML = `
     <div class="user-image">
       <img src=${user.img} />
@@ -310,33 +326,33 @@ function displayUsers() {
   });
   // document.getElementById('homepage').appendChild(usersEl);
   usersEl.innerHTML += `<div class="section-user"> <p class='moreFollowers'>Show more</p></div>`;
-  document.getElementById("asideUsers").appendChild(usersEl);
+  document.getElementById('asideUsers').appendChild(usersEl);
 }
 
 function toggleFollow(e) {
   console.log(e.target.innerHTML);
   var btn = e.target;
   console.log(btn.innerHTML);
-  if (btn.innerHTML == "Follow") {
-    btn.innerHTML = "Following";
-    btn.classList.add("unfollow-btn");
+  if (btn.innerHTML == 'Follow') {
+    btn.innerHTML = 'Following';
+    btn.classList.add('unfollow-btn');
   } else {
-    btn.innerHTML = "Follow";
-    btn.classList.remove("unfollow-btn");
+    btn.innerHTML = 'Follow';
+    btn.classList.remove('unfollow-btn');
   }
 }
 
-function likePost(e,_postId,userID) {
+function likePost(e, _postId, userID) {
   e.stopPropagation();
   var isLiked = document.getElementById(e.target.parentElement.id); //like btn id
-  var userLikesArr=posts[_postId-1].usersLikes;
-  var likesNum = posts[_postId-1].likesNum;
+  var userLikesArr = posts[_postId - 1].usersLikes;
+  var likesNum = posts[_postId - 1].likesNum;
 
   var p = {};
   p.usersLikes = userLikesArr;
-  if (isLiked.classList.contains("liked-post-style")) {
+  if (isLiked.classList.contains('liked-post-style')) {
     //user dislikes post
-    isLiked.classList.remove("liked-post-style");
+    isLiked.classList.remove('liked-post-style');
     p.likesNum = likesNum - 1;
     const index = p.usersLikes.indexOf(parseInt(userID));
     if (index > -1) {
@@ -344,21 +360,21 @@ function likePost(e,_postId,userID) {
     }
   } //user likes post
   else {
-    isLiked.classList.add("liked-post-style");
+    isLiked.classList.add('liked-post-style');
     p.likesNum = likesNum + 1;
     p.usersLikes.push(parseInt(userID));
   }
-  EditPost(_postId,p);
+  EditPost(_postId, p);
 }
-function retweetPost(e,postID,userID){
+function retweetPost(e, postID, userID) {
   e.stopPropagation();
   var isRetweeted = document.getElementById(e.target.parentElement.id); //retweet btn id
   var p = {};
-  p.usersRetweets = posts[postID-1].usersRetweets;
+  p.usersRetweets = posts[postID - 1].usersRetweets;
   if (isRetweeted.classList.contains('retweeted-post-style')) {
     //user dislikes post
     isRetweeted.classList.remove('retweeted-post-style');
-    p.retweetsNum = posts[postID-1].retweetsNum - 1;
+    p.retweetsNum = posts[postID - 1].retweetsNum - 1;
     const index = p.usersRetweets.indexOf(parseInt(userID));
     if (index > -1) {
       p.usersRetweets.splice(index, 1);
@@ -366,12 +382,12 @@ function retweetPost(e,postID,userID){
   } //user likes post
   else {
     isRetweeted.classList.add('retweeted-post-style');
-    p.retweetsNum = posts[postID-1].retweetsNum + 1;
+    p.retweetsNum = posts[postID - 1].retweetsNum + 1;
     p.usersRetweets.push(parseInt(userID));
   }
-  EditPost(postID,p);
+  EditPost(postID, p);
 }
-function EditPost(postID,postObj){
+function EditPost(postID, postObj) {
   var jsonPost = JSON.stringify(postObj);
   console.log(jsonPost);
   req.open('PATCH', url + '/posts/' + postID);
@@ -384,7 +400,7 @@ function EditPost(postID,postObj){
       console.log(po);
     }
   };
-  req.send(jsonPost);  
+  req.send(jsonPost);
 }
 function addPost(inputId) {
   var text = document.getElementById(inputId).value;
@@ -396,40 +412,27 @@ function addPost(inputId) {
   newPost.id = (++lastPostId).toString();
   newPost.createdAt = new Date();
   posts.push(newPost);
-  console.log("old", postOb);
-  console.log("new", newPost);
+  console.log('old', postOb);
+  console.log('new', newPost);
   addPostReq(newPost);
 }
-function displayProfile(){
-  document.getElementById("profile-user-image").src=user.img;
-  document.getElementById("profile-user-name").innerText=user.name;
-  document.getElementById("name-span").innerText=user.name;
-  document.getElementById("profile-user-username").innerText=user.userName;
-  document.getElementById("profile-following").innerText=user.following;
-  document.getElementById("profile-followers").innerText=user.followers;
+function displayProfile() {
+  document.getElementById('profile-user-image').src = user.img;
+  document.getElementById('profile-user-name').innerText = user.name;
+  document.getElementById('name-span').innerText = user.name;
+  document.getElementById('profile-user-username').innerText = user.userName;
+  document.getElementById('profile-following').innerText = user.following;
+  document.getElementById('profile-followers').innerText = user.followers;
 }
 
 function goToPost(_id) {
-  location.href = "./comments.html";
-  sessionStorage.setItem("tweet", _id);
-}
-
-function addBookmark(event,_postId, _userId) {
-  console.log("bookmark" , _postId , _userId);
-  event.stopPropagation();
-  // loop in post with that id
-  //user array of users ................>user ob in that position
-  //
-
-  //loop posts  post id == users. bookmark[0]
-  //
-  
-  
+  location.href = './comments.html';
+  sessionStorage.setItem('tweet', _id);
 }
 
 function displayTweetPage() {
   setTimeout(() => {
-    var tweetId=sessionStorage.getItem('tweet')
+    var tweetId = sessionStorage.getItem('tweet');
     getPosts(`id=${tweetId}`);
   }, 200);
   setTimeout(() => {
@@ -440,19 +443,19 @@ function displayTweetPage() {
   }, 350);
 
   setTimeout(() => {
-    if (posts[0].commentsNum>0)  // in retweet page posts contains only current post ,>>>>>>>>>>> if tweet contains comments
-          getComments('postId='+posts[0].id);// in retweet page posts contains only current post , comments?postId=1
+    if (posts[0].commentsNum > 0)
+      // in retweet page posts contains only current post ,>>>>>>>>>>> if tweet contains comments
+      getComments('postId=' + posts[0].id); // in retweet page posts contains only current post , comments?postId=1
   }, 400);
 
   setTimeout(() => {
-    if (posts[0].commentsNum>0)  
-      displayPosts(comments);// display comments 
+    if (posts[0].commentsNum > 0) displayPosts(comments); // display comments
   }, 450);
-  
 }
 
-function displayWriteReply() { // in tweet page added after display tweet
-  document.getElementsByClassName('homepage')[0].innerHTML+=`
+function displayWriteReply() {
+  // in tweet page added after display tweet
+  document.getElementsByClassName('homepage')[0].innerHTML += `
          <div class="post replyContainer">
          <img
            class="profile-img"
@@ -471,10 +474,9 @@ function displayWriteReply() { // in tweet page added after display tweet
          </div>
          <button class="primary-btn reply-btn" onclick="">Tweet</button>   
         </div>
-    `
+    `;
 }
-function HandleIconPost (e) { 
-
+function HandleIconPost(e) {
   e.stopPropagation();
   var selectedPost = document.getElementById(
     e.target.parentElement.parentElement.parentElement.parentElement.id
@@ -517,3 +519,140 @@ function HandleIconPost (e) {
   };
 }
 
+function addBookmark(e, _postId, _userId) {
+  e.stopPropagation();
+  console.log('bookmark', _postId, _userId);
+
+  // console.log(posts);
+
+  var postTarget = posts.filter(p => p.id == _postId);
+  postTarget = postTarget[0];
+  // console.log(postTarget);
+
+  var userID = postTarget.user.id;
+
+  var userObj = {};
+
+  users.forEach(u => {
+    if (u.id == userID && !u.bookmarks.includes(_postId)) {
+      u.bookmarks.push(_postId);
+      console.log(user.bookmarks);
+      console.log(users);
+
+      userObj.bookmarks = u.bookmarks;
+
+      req.open('PATCH', url + '/users/' + userID);
+
+      req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+      req.send(JSON.stringify(userObj));
+    }
+  });
+}
+
+function displayBookmarks() {
+  document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
+  var i = 0;
+
+  var bookmarkIDs = [];
+  users.forEach(user => {
+    var bm = user.bookmarks;
+
+    bm.forEach(IDs => {
+      bookmarkIDs.push(IDs.toString());
+    });
+  });
+
+  posts.forEach(post => {
+    if (bookmarkIDs.includes(post.id)) {
+      document.getElementById('bookmarks').innerHTML += `
+    <div id=${post.id} class="post-container" onclick="goToPost(${post.id})" >
+         <label class="user-id" style="display:none">${post.user.id}</label>
+         <label class="users-likes" style="display:none">${
+           post.usersLikes
+         }</label>
+         <label class="users-retweets" style="display:none">${
+           post.usersRetweets
+         }</label>
+          <img class="logged-user-image profile-img" onmouseover='displayCard(event,${
+            post.user.id
+          })' src=${post.user.img} alt="profile-img"/>
+
+         
+          <div class="post-content">
+          
+      <div class="post-text">
+    
+        <div class="name-container">
+        
+          <h6 class="name-style" onmouseover='displayCard(event,${
+            post.user.id
+          })'>${post.user.name}</h6>
+                  <span class="username-style">@${post.user.userName}</span>
+        </div>
+
+        <button title="More"class="settings-btn" onclick=${'HandleIconPost(event)'} ><i class="fas fa-ellipsis-h"></i></button>    </div>
+           ${
+             post.text &&
+             '<article class="post-article">' + post.text + '</article>'
+           }
+          ${
+            post.image &&
+            '<img class="post-media" src=' + post.image + ' alt="post-media"/>'
+          }
+          ${
+            post.video &&
+            `
+            <div class="post-media">
+            <iframe style="height: 350px;width:100%;border-radius:20px" src="https://www.youtube.com/embed/-p1P4fdhaF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            `
+          }
+
+          <footer class="post-footer" style="display: flex;">
+            <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
+              post.commentsNum
+            }</label></button>
+            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${
+        post.id
+      },${
+        user.id
+      })"><i class="fas fa-retweet"></i><label class="retweets-num">${
+        post.retweetsNum
+      }</label></button>
+            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${
+        post.id
+      },${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
+        post.likesNum
+      }</label></button>
+            <button class="share-btn" title="Share" onclick='addBookmark(event,${
+              post.id
+            },${user.id})'><i class="fas fa-sign-out-alt"
+                style="transform: rotate(-90deg);"></i></button>
+          </footer>
+
+
+           </div>
+        </div>
+    `;
+      if (post.usersLikes.includes(parseInt(user.id))) {
+        var like = document.getElementById(`like-btn-${i}`);
+        like.classList.add('liked-post-style');
+        like.title = 'dislike';
+      } else {
+        var like = document.getElementById(`like-btn-${i}`);
+        like.classList.remove('liked-post-style');
+      }
+
+      var retweet = document.getElementById(`retweet-btn-${i}`);
+      if (post.usersRetweets.includes(parseInt(user.id))) {
+        retweet.classList.add('retweeted-post-style');
+        retweet.title = 'Undo Retweet';
+      } else {
+        retweet.classList.remove('retweeted-post-style');
+      }
+
+      i++;
+    }
+  });
+}
