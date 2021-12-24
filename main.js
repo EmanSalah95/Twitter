@@ -37,20 +37,7 @@ function loadPage(page) {
   }
 
   if (page == "tweet") {
-    setTimeout(() => {
-      var tweetId=sessionStorage.getItem('tweet')
-      getPosts(`id=${tweetId}`);
-    }, 400);
-    setTimeout(() => {
-      displayPosts();
-    }, 500);
-    // setTimeout(() => {
-    //   getPosts();
-    // }, 500);
-    // setTimeout(() => {
-    //   displayPosts();
-    // },600);
-
+    displayTweetPage();
   }
 
   if(page == "profilepage")
@@ -427,3 +414,40 @@ function addBookmark(event,_postId, _userId) {
   
   
 }
+
+function displayTweetPage() {
+  setTimeout(() => {
+    var tweetId=sessionStorage.getItem('tweet')
+    getPosts(`id=${tweetId}`);
+  }, 400);
+  setTimeout(() => {
+    displayPosts();
+  }, 500);
+  setTimeout(() => {
+    displayWriteReply();
+  }, 550);
+}
+
+function displayWriteReply() { // in tweet page added after display tweet
+  document.getElementsByClassName('homepage')[0].innerHTML+=`
+         <div class="post replyContainer">
+         <img
+           class="profile-img"
+           id="profile"
+           style="border-radius: 50%"
+           src=${user.img}
+           alt="profile image"
+         />
+         <div class="post-right-side">
+           <input
+             id="write-header"
+             type="text"
+             placeholder="What's happening?"
+           />
+       
+         </div>
+         <button class="primary-btn reply-btn" onclick="">Tweet</button>   
+        </div>
+    `
+}
+
