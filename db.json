@@ -6,8 +6,8 @@
       "text": "no gain without pain",
       "video": "",
       "image": "",
-      "commentsNum": 0,
-      "likesNum": 2,
+      "commentsNum": 1,
+      "likesNum": 1,
       "retweetsNum": 1,
       "user": {
         "id": "3",
@@ -22,8 +22,7 @@
       },
       "comments": [],
       "usersLikes": [
-        2,
-        1
+        2
       ],
       "usersRetweets": [
         2
@@ -203,7 +202,7 @@
   "comments": [
     {
       "id": "1",
-      "userId": "3",
+      "postId": "1",
       "createdAt": "2021-12-12T10:36:15.425Z",
       "text": "comment1",
       "video": "",

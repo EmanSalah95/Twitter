@@ -4,7 +4,8 @@ var posts = [],
   users = [],
   user = {},
   post = {},
-  currentTweet={};
+  currentTweet={},
+  comments=[];
 
 var postOb = {
   id: "",
@@ -29,7 +30,7 @@ function loadPage(page) {
       getPosts();
     }, 400);
     setTimeout(() => {
-      displayPosts();
+      displayPosts(posts);
     }, 450);
     setTimeout(() => {
       displayAddTweet();
@@ -68,6 +69,19 @@ function getPosts(condition='') {
     if (req.readyState == 4) {
       if (req.status == 200) {
         posts = JSON.parse(req.responseText);
+      }
+    }
+  };
+}
+
+function getComments(condition='') {
+  req.open("GET", url + "/comments?"+condition); //GET /comments?id=1 >>>> only in tweet page
+  req.send();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        comments = JSON.parse(req.responseText);
+        console.log("commmmmments",comments);
       }
     }
   };
@@ -140,10 +154,10 @@ function addPostReq(_postOb) {
   }
 }
 
-function displayPosts() {
+function displayPosts(_posts) {
   document.getElementsByClassName("lds-ring")[0].classList.add("hidden"); // to hide indicator //.remove("hidden") change it back
   var i = 0;
-  posts.forEach((post) => {
+  _posts.forEach((post) => {
     document.getElementsByClassName("homepage")[0].innerHTML += `
     <div id=${post.id} class="post-container" onclick="goToPost(${post.id})" >
          <label class="user-id" style="display:none">${post.user.id}</label>
@@ -467,13 +481,24 @@ function displayTweetPage() {
   setTimeout(() => {
     var tweetId=sessionStorage.getItem('tweet')
     getPosts(`id=${tweetId}`);
-  }, 400);
+  }, 200);
   setTimeout(() => {
-    displayPosts();
-  }, 500);
+    displayPosts(posts);
+  }, 300);
   setTimeout(() => {
     displayWriteReply();
-  }, 550);
+  }, 350);
+
+  setTimeout(() => {
+    if (posts[0].commentsNum>0)  // in retweet page posts contains only current post ,>>>>>>>>>>> if tweet contains comments
+          getComments('postId='+posts[0].id);// in retweet page posts contains only current post , comments?postId=1
+  }, 400);
+
+  setTimeout(() => {
+    if (posts[0].commentsNum>0)  
+      displayPosts(comments);// display comments 
+  }, 450);
+  
 }
 
 function displayWriteReply() { // in tweet page added after display tweet
