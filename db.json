@@ -36,7 +36,7 @@
       "image": "https://images.unsplash.com/photo-1639771359448-e90840f3eec8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       "commentsNum": 0,
       "likesNum": 2,
-      "retweetsNum": 1,
+      "retweetsNum": 0,
       "user": {
         "id": "4",
         "userName": "Raghda@Raghda",
@@ -53,9 +53,7 @@
         4,
         1
       ],
-      "usersRetweets": [
-        1
-      ]
+      "usersRetweets": []
     },
     {
       "id": "3",
@@ -64,7 +62,7 @@
       "video": "https://www.youtube.com/watch?v=xozNnytRE6E",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 1,
+      "likesNum": 0,
       "retweetsNum": 1,
       "user": {
         "id": "1",
@@ -78,9 +76,7 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [
-        1
-      ],
+      "usersLikes": [],
       "usersRetweets": [
         1
       ]
@@ -181,8 +177,8 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 0,
-      "retweetsNum": 0,
+      "likesNum": 1,
+      "retweetsNum": 1,
       "user": {
         "id": "1",
         "userName": "Eman@Salah",
@@ -195,8 +191,12 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [],
-      "usersRetweets": []
+      "usersLikes": [
+        1
+      ],
+      "usersRetweets": [
+        1
+      ]
     }
   ],
   "comments": [
