@@ -294,7 +294,6 @@ header .profile .fa-ellipsis-h {
 .post-footer > button > i {
   border-radius: 50%;
 }
-
 .reply-btn .retweet-btn .like-btn .share-btn:hover i,
 label {
   padding: 0 8px;
@@ -321,11 +320,11 @@ label {
 .share-btn:hover i {
   background-color: #1d9cf017;
 }
-.post-footer>button[id^="like-btn-"]:hover{
+.like-btn:hover{
   color: #CC2275;
   opacity: 1;
 }
-.post-footer>button[id^="like-btn-"]:hover i{
+.like-btn:hover i{
   background-color: #2f2438c2;
 }
 #timeline-options-btn {
@@ -613,4 +612,58 @@ label {
   color: #1d9bf0;
   font-size: 14px;
   padding: 10px 0;
+}
+
+/* profile page */
+.user-profile-image{
+  position: absolute;
+  border-radius: 50%;
+  width: 30%;
+  height: 155px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #15202B;
+  top:60%;
+  left:5%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.edit-profile-btn{
+  float: right;
+  margin-top: 3%;
+  margin-right: 2%;
+  padding: 2%;
+  border-radius: 25px;
+  border-width: 1px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-style: solid;
+  border-color: #3D5466;
+  background-color: #15202B;
+  -webkit-border-radius: 25px;
+  font-weight: bolder;
+  font-size: 15px;
+}
+.edit-profile-btn:hover{
+  background-color: #2B3640;
+}
+.Tweets-options{
+  padding: 0% 10%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  list-style: none;
+  border-bottom-width: 1px;
+  border-bottom-style:solid;
+  border-bottom-color: #38444d;
+}
+.Tweets-options li{
+  padding: 4%;
+}
+.Tweets-options li:hover{
+  background-color: #2B3640;
 }

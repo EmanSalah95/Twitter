@@ -423,3 +423,24 @@ function addPost(inputId) {
   console.log("new",newPost);
   addPostReq(newPost);
 }
+function displayProfile(){
+  id=localStorage.getItem('currentUser');
+  req.open('GET', url + '/users/' +id);
+  req.send();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        var u = JSON.parse(req.responseText);
+        
+        document.getElementById("profile-user-image").src=u.img;
+        document.getElementById("profile-user-name").innerText=u.name;
+        document.getElementById("name-span").innerText=u.name;
+        document.getElementById("profile-user-username").innerText=u.userName;
+        document.getElementById("profile-following").innerText=u.following;
+        document.getElementById("profile-followers").innerText=u.followers;
+      }
+    } else {
+      return undefined;
+    }
+  };
+}
