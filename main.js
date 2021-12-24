@@ -182,8 +182,7 @@ function displayPosts() {
                   <span class="username-style">@${post.user.userName}</span>
         </div>
 
-     <button title="More"class="settings-btn"><i class="fas fa-ellipsis-h"></i></button>
-    </div>
+        <button title="More"class="settings-btn" onclick=${'HandleIconPost(event)'} ><i class="fas fa-ellipsis-h"></i></button>    </div>
            ${post.text && `<article class="post-article">${post.text}</article>`}
           ${
             post.image &&
@@ -449,5 +448,48 @@ function displayWriteReply() { // in tweet page added after display tweet
          <button class="primary-btn reply-btn" onclick="">Tweet</button>   
         </div>
     `
+}
+function HandleIconPost (e) {
+
+  e.stopPropagation();
+  var selectedPost = document.getElementById(
+    e.target.parentElement.parentElement.parentElement.parentElement.id
+  );
+
+  if (selectedPost == null)
+    selectedPost = document.getElementById(e.target.parentElement.id);
+
+  var userID = selectedPost.getElementsByClassName('user-id')[0].innerText; //to get user id from hidden label
+
+  // var user = getUser(userID);
+  req.open('GET', url + '/users/' + userID);
+  req.send();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4) {
+      if (req.status == 200) {
+        user = JSON.parse(req.responseText);
+        // console.log(user)
+        setTimeout(function () {
+          var card = document.createElement('div');
+          card.setAttribute('id', 'caard-id');
+          card.setAttribute('class', 'div-icon-post');
+          card.style.display = 'block';
+          card.innerHTML = ` <div >
+          <ul>
+            <li> <i class="far fa-envelope"></i> <span> Send Direct Message</span></li>
+            <li> <i class="far fa-bookmark"></i> Bookmark</span></li>
+            <li> <i class="fas fa-link"></i> <span> Copy link to Tweet</span></li>
+            <li> <i class="fas fa-sign-out-alt"
+            style="transform: rotate(-90deg);"></i> <span> Share Tweet via ...</span></li>
+          </ul>
+        </div> `;
+          selectedPost.appendChild(card);
+          card.onmouseleave = function () {
+            selectedPost.removeChild(card);
+          };
+        }, 400);
+      }
+    }
+  };
 }
 
