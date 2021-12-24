@@ -7,7 +7,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 1,
+      "likesNum": 2,
       "retweetsNum": 1,
       "user": {
         "id": "3",
@@ -22,7 +22,8 @@
       },
       "comments": [],
       "usersLikes": [
-        2
+        2,
+        1
       ],
       "usersRetweets": [
         2
@@ -92,7 +93,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 1,
+      "likesNum": 2,
       "retweetsNum": 2,
       "user": {
         "id": "2",
@@ -107,7 +108,8 @@
       },
       "comments": [],
       "usersLikes": [
-        4
+        4,
+        1
       ],
       "usersRetweets": [
         2,
@@ -172,13 +174,57 @@
       "usersRetweets": [
         2
       ]
+    },
+    {
+      "id": "7",
+      "createdAt": "2021-12-24T12:50:12.524Z",
+      "text": "goos post",
+      "video": "",
+      "image": "",
+      "commentsNum": 0,
+      "likesNum": 0,
+      "retweetsNum": 0,
+      "user": {
+        "id": "1",
+        "userName": "Eman@Salah",
+        "name": "Eman Salah",
+        "email": "Eman@gmail.com",
+        "password": "123456",
+        "img": "https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+        "bio": "Front-End developer .",
+        "following": 0,
+        "followers": 0
+      },
+      "comments": [],
+      "usersLikes": [],
+      "usersRetweets": []
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "1",
+      "userId": "3",
+      "createdAt": "2021-12-12T10:36:15.425Z",
+      "text": "comment1",
+      "video": "",
+      "image": "",
+      "commentsNum": 0,
+      "likesNum": 0,
+      "retweetsNum": 0,
+      "user": {
+        "id": "3",
+        "userName": "Heba@Ghazali",
+        "name": "Heba Ghazali",
+        "email": "Heba@Ghazali.com",
+        "password": "12345678",
+        "img": "https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "bio": "Front-End developer Engineer .",
+        "following": 0,
+        "followers": 0
+      },
+      "comments": [],
+      "usersLikes": [],
+      "usersRetweets": []
     }
   ],
   "users": [
@@ -224,7 +270,8 @@
       "img": "https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       "bio": "Front-End developer Engineer .",
       "following": 0,
-      "followers": 0
+      "followers": 0,
+      "bookmarks": []
     }
   ]
 }
