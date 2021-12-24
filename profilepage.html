@@ -17,7 +17,7 @@
     <title>Twitter</title>
 </head>
 
-<body onload="displayProfile()">
+<body onload="loadPage('profilepage')">
     <header>
         <div>
             <div class="logo"><i class="fab fa-twitter"></i></div>
@@ -35,7 +35,7 @@
                     <a href="#"><i class="far fa-envelope"></i>Messages</a>
                 </li>
                 <li>
-                    <a href="#"><i class="far fa-bookmark"></i>Bookmarks</a>
+                    <a href="bookmarks.html"><i class="far fa-bookmark"></i>Bookmarks</a>
                 </li>
                 <li>
                     <a href="#"><i class="far fa-list-alt"></i>Lists</a>
@@ -53,12 +53,12 @@
 
         <div class="profile">
             <div class="profile-picture">
-                <img src="assets/images/profile-picture.png" alt="Profile Picture" />
+                <img id='aside-profile' src="assets/images/profile-picture.png" alt="Profile Picture" />
             </div>
 
             <div class="name">
-                <p class="full-name">Name</p>
-                <p class="username">@username</p>
+                <p class="full-name" id='aside-name'></p>
+                <p class="username" id='aside-user-name'></p>
             </div>
 
             <i class="fas fa-ellipsis-h"></i>
@@ -66,7 +66,7 @@
     </header>
 
     <main>
-        <section class="profile-page">
+        <section class="profile-page" style="width: 100%;" >
             <div id="home-header" style="display: flex;flex-direction: row;">
                 <a href="index.html"><i class="fas fa-arrow-left"></i></a>
                 <span id="name-span" style="
@@ -113,86 +113,15 @@
                      Likes
                  </li>
                 </ul>
-                <div class="post-container" style="display: block;">
-                    <div style="display: flex;flex-direction: row;">
-                      <img class="logged-user-image" src="https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
-                      <h4 style="margin-left: 3%;">Heba Muhammed</h4>
-                      <span style="margin-left: 3%;">@Heba</span>
-                      <button title="More"class="settings-btn" style="margin-right: 2%;"><i class="fas fa-ellipsis-h"></i></button>
-                    </div>
-                    <article class="post-article">
-                        Success woke me up, Motivation made me breakfast, Destiny gave me my agenda and the Lord gave me his blessings.                    </article>
-                    <footer class="post-footer" style="display: flex;flex-direction: row;justify-content: space-around; padding-left: 10%;">
-                      <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>10</label></button>
-                      <button class="retweet-btn" title="Retweet"><i class="fas fa-retweet"></i><label>10</label></button>
-                      <button class="like-btn" title="Like"><i class="far fa-heart"></i><label>200</label></button>
-                      <button class="share-btn" title="Share"><i class="fas fa-sign-out-alt"
-                          style="transform: rotate(-90deg);"></i></button>
-                    </footer>
-                  </div>
-                  <div class="post-container" style="display: block;">
-                    <div style="display: flex;flex-direction: row;">
-                      <img class="logged-user-image" src="https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
-                      <h4 style="margin-left: 3%;">Raghda Mohsen</h4>
-                      <span style="margin-left: 3%;">@Raghda</span>
-                      <button title="More"class="settings-btn" style="margin-right: 2%;"><i class="fas fa-ellipsis-h"></i></button>
-                    </div>
-                    <article class="post-article">
-                        Nature has music for those who know how to listen to it
-                    </article>
-                    <video class="post-media" controls autoplay
-                    src="./assets/videos/production ID_4662765.mp4"></video>
-                    <footer class="post-footer" style="display: flex;flex-direction: row;justify-content: space-around; padding-left: 10%;">
-                      <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>10</label></button>
-                      <button class="retweet-btn" title="Retweet"><i class="fas fa-retweet"></i><label>10</label></button>
-                      <button class="like-btn" title="Like"><i class="far fa-heart"></i><label>200</label></button>
-                      <button class="share-btn" title="Share"><i class="fas fa-sign-out-alt"
-                          style="transform: rotate(-90deg);"></i></button>
-                    </footer>
-                  </div>
-                <div class="post-container" style="display: block;">
-                    <div style="display: flex;flex-direction: row;">
-                      <img class="logged-user-image" src="https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80"/>
-                      <h4 style="margin-left: 3%;">Eman Salah</h4>
-                      <span style="margin-left: 3%;">@Eman</span>
-                      <button title="More"class="settings-btn" style="margin-right: 2%;"><i class="fas fa-ellipsis-h"></i></button>
-                    </div>
-                    <article class="post-article">
-                        Life is too short to be living someone else's dream.
-                    </article>
-                    <footer class="post-footer" style="display: flex;flex-direction: row;justify-content: space-around; padding-left: 10%;">
-                      <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>10</label></button>
-                      <button class="retweet-btn" title="Retweet"><i class="fas fa-retweet"></i><label>10</label></button>
-                      <button class="like-btn" title="Like"><i class="far fa-heart"></i><label>200</label></button>
-                      <button class="share-btn" title="Share"><i class="fas fa-sign-out-alt"
-                          style="transform: rotate(-90deg);"></i></button>
-                    </footer>
-                  </div>
-                  <div class="post-container" style="display: block;">
-                    <div style="display: flex;flex-direction: row;">
-                      <img class="logged-user-image" src="https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"/>
-                      <h4 style="margin-left: 3%;">Esraa Elsayed</h4>
-                      <span style="margin-left: 3%;">@Esraa</span>
-                      <button title="More"class="settings-btn" style="margin-right: 2%;"><i class="fas fa-ellipsis-h"></i></button>
-                    </div>
-                    <article class="post-article">
-                        Consider how hard it is to change urself and you'll understand what little chance you have in trying to change others.
-                    <img class="post-media" src="./assets/images/2.jpg" />
-                    <footer class="post-footer" style="display: flex;flex-direction: row;justify-content: space-around; padding-left: 10%;">
-                      <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>10</label></button>
-                      <button class="retweet-btn" title="Retweet"><i class="fas fa-retweet"></i><label>10</label></button>
-                      <button class="like-btn" title="Like"><i class="far fa-heart"></i><label>200</label></button>
-                      <button class="share-btn" title="Share"><i class="fas fa-sign-out-alt"
-                          style="transform: rotate(-90deg);"></i></button>
-                    </footer>
-                  </div>
-            </div>      
-
+            </div>   
+            <div class="homepage" style="display: block;width: 100%;">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>   
         </section>
         <!-- Sidebar -->
 
         <aside class="sidebar">
-            <div class="search-bar">
+            <div class="search-bar" style="right: 7%;">
                 <input type="text" placeholder="Search Twitter" />
                 <i class="fas fa-search"></i>
             </div>

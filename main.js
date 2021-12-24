@@ -53,6 +53,19 @@ function loadPage(page) {
 
   }
 
+  if(page == "profilepage")
+  {
+    setTimeout(()=>{
+      displayProfile();
+    },400);
+    setTimeout(() => {
+      getPosts();
+    }, 450);
+    setTimeout(() => {
+      displayPosts();
+    }, 500);
+  }
+
   setTimeout(() => {
     displayAsideUser();
   }, 450);
@@ -69,6 +82,7 @@ function displayAddTweet() {
 }
 
 function displayAsideUser() {
+  console.log(user)
   document.getElementById("aside-profile").src = user.img;
   document.getElementById("aside-name").innerHTML = user.name;
   document.getElementById("aside-user-name").innerHTML = user.userName;
@@ -177,8 +191,8 @@ function displayPosts() {
     
         <div class="name-container">
         
-          <h6 class="name-style" onmouseover=${"displayCard(event)"}>${ post.user.name}</h6>
-                  <span class="username-style" onmouseover=${"displayCard(event)"}>@${post.user.userName}</span>
+          <h6 class="name-style" onmouseover='displayCard(event,${post.user.id})'>${ post.user.name}</h6>
+                  <span class="username-style">@${post.user.userName}</span>
         </div>
 
      <button title="More"class="settings-btn"><i class="fas fa-ellipsis-h"></i></button>
@@ -202,10 +216,10 @@ function displayPosts() {
             <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
               post.commentsNum
             }</label></button>
-            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick=${'retweetPost(event)'}><i class="fas fa-retweet"></i><label class="retweets-num">${
+            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${post.id},${user.id})"><i class="fas fa-retweet"></i><label class="retweets-num">${
               post.retweetsNum
             }</label></button>
-            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${post.id})"><i class="fas fa-heart"></i><label class="likes-num">${
+            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${post.id},${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
       post.likesNum
     }</label></button>
             <button class="share-btn" title="Share" onclick='addBookmark(event,${post.id},${user.id})'><i class="fas fa-sign-out-alt"
@@ -238,49 +252,34 @@ function displayPosts() {
 }
 
 function displayCard(e,_id) {
-  console.log("my id",_id);
-  console.log("users",users);
+  // console.log("my id",_id);
+  // console.log("users",users);
   var selectedPost = document.getElementById(
     e.target.parentElement.parentElement.parentElement.parentElement.id
   );
-
   if (selectedPost == null)
     selectedPost = document.getElementById(e.target.parentElement.id);
-
-  var userID = selectedPost.getElementsByClassName("user-id")[0].innerText; //to get user id from hidden label
-
-  req.open("GET", url + "/users/" + userID);
-  req.send();
-  req.onreadystatechange = () => {
-    if (req.readyState == 4) {
-      if (req.status == 200) {
-        var user = JSON.parse(req.responseText);
-        // console.log(user)
-        setTimeout(function () {
-          var card = document.createElement("div");
-          card.setAttribute("id", "card-id");
-          card.setAttribute("class", "profile-card");
-          card.style.display = "block";
-          card.innerHTML = `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;">
-            <img id="selected-user-img" class="logged-user-image" src=${user.img}/>
-            <h6 id="selected-user-name" class="name-style">${user.name}</h6>
-            <span id="selected-user-username" class="username-style" style="color:#8899A6;">${user.userName}</span>
-        </div>
-        <button class="card-follow-btn" onclick="toggleFollow(event)">Follow</button>
-        <p id="selected-user-bio" style="clear: both;padding: 5% 0%;line-height: 1.5em;">
-        ${user.bio}
-        </p>
-        <div>
-            <h4 id="selected-user-following" style="float: left;margin-right: 10%;">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
-            <h4 id="selected-user-followers">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
-        </div>`;
-          selectedPost.appendChild(card);
-          card.onmouseleave = function () {
-            selectedPost.removeChild(card);
-          };
-        }, 400);
-      }
-    }
+  var user=users[_id-1];
+  var card = document.createElement("div");
+  card.setAttribute("id", "card-id");
+  card.setAttribute("class", "profile-card");
+  card.style.display = "block";
+  card.innerHTML = `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;">
+    <img id="selected-user-img" class="logged-user-image" src=${user.img}/>
+    <h6 id="selected-user-name" class="name-style">${user.name}</h6>
+    <span id="selected-user-username" class="username-style" style="color:#8899A6;">${user.userName}</span>
+</div>
+<button class="card-follow-btn" onclick="toggleFollow(event)">Follow</button>
+<p id="selected-user-bio" style="clear: both;padding: 5% 0%;line-height: 1.5em;">
+${user.bio}
+</p>
+<div>
+    <h4 id="selected-user-following" style="float: left;margin-right: 10%;">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
+    <h4 id="selected-user-followers">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
+</div>`;
+  selectedPost.appendChild(card);
+  card.onmouseleave = function () {
+    selectedPost.removeChild(card);
   };
 }
 
@@ -328,30 +327,19 @@ function toggleFollow(e) {
   }
 }
 
-function likePost(e,_postId) {
-  console.log("post id here",_postId);
+function likePost(e,_postId,userID) {
   e.stopPropagation();
-  var likedpost = document.getElementById(
-    e.target.parentElement.parentElement.parentElement.parentElement.id
-  ); //selected post
   var isLiked = document.getElementById(e.target.parentElement.id); //like btn id
-  console.log(isLiked);
-  var userLikesStr =
-    likedpost.getElementsByClassName("users-likes")[0].innerText; //get users that likes the post from html
-  var userLikesArrStr = [];
-  if (userLikesStr != "") {
-    userLikesArrStr = userLikesStr.split(",");
-  }
-  var likesNumStr = likedpost.getElementsByClassName("likes-num")[0].innerText; //get users that likes the post from html
-  var likesNum = parseInt(likesNumStr);
+  var userLikesArr=posts[_postId-1].usersLikes;
+  var likesNum = posts[_postId-1].likesNum;
 
   var p = {};
-  p.usersLikes = userLikesArrStr.map(Number); //convert array from string to numbers
+  p.usersLikes = userLikesArr;
   if (isLiked.classList.contains("liked-post-style")) {
     //user dislikes post
     isLiked.classList.remove("liked-post-style");
     p.likesNum = likesNum - 1;
-    const index = p.usersLikes.indexOf(parseInt(user.id));
+    const index = p.usersLikes.indexOf(parseInt(userID));
     if (index > -1) {
       p.usersLikes.splice(index, 1);
     }
@@ -359,58 +347,35 @@ function likePost(e,_postId) {
   else {
     isLiked.classList.add("liked-post-style");
     p.likesNum = likesNum + 1;
-    p.usersLikes.push(parseInt(user.id));
+    p.usersLikes.push(parseInt(userID));
   }
-
-  var jsonPost = JSON.stringify(p);
-  console.log(jsonPost);
-  req.open("PATCH", url + "/posts/" + likedpost.id);
-  req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  req.onreadystatechange = function () {
-    var po = JSON.parse(req.responseText);
-    if (req.readyState == 4 && req.status == "200") {
-      console.log(po);
-    } else {
-      console.log(po);
-    }
-  };
-  req.send(jsonPost);
+  EditPost(_postId,p);
 }
-function retweetPost(e){
-  var retweetedPost = document.getElementById(
-    e.target.parentElement.parentElement.parentElement.parentElement.id
-  ); //selected post
+function retweetPost(e,postID,userID){
+  e.stopPropagation();
   var isRetweeted = document.getElementById(e.target.parentElement.id); //retweet btn id
-  console.log(isRetweeted);
-  var usersRetweetStr =
-  retweetedPost.getElementsByClassName('users-retweets')[0].innerText; //get users that likes the post from html
-  var userRetweetsArrStr = [];
-  if (usersRetweetStr != '') {
-    userRetweetsArrStr = usersRetweetStr.split(',');
-  }
-  var retweetsNumStr = retweetedPost.getElementsByClassName('retweets-num')[0].innerText; //get users that likes the post from html
-  var retweetsNum = parseInt(retweetsNumStr);
-
   var p = {};
-  p.usersRetweets = userRetweetsArrStr.map(Number); //convert array from string to numbers
+  p.usersRetweets = posts[postID-1].usersRetweets;
   if (isRetweeted.classList.contains('retweeted-post-style')) {
     //user dislikes post
     isRetweeted.classList.remove('retweeted-post-style');
-    p.retweetsNum = retweetsNum - 1;
-    const index = p.usersRetweets.indexOf(parseInt(user.id));
+    p.retweetsNum = posts[postID-1].retweetsNum - 1;
+    const index = p.usersRetweets.indexOf(parseInt(userID));
     if (index > -1) {
       p.usersRetweets.splice(index, 1);
     }
   } //user likes post
   else {
     isRetweeted.classList.add('retweeted-post-style');
-    p.retweetsNum = retweetsNum + 1;
-    p.usersRetweets.push(parseInt(user.id));
+    p.retweetsNum = posts[postID-1].retweetsNum + 1;
+    p.usersRetweets.push(parseInt(userID));
   }
-
-  var jsonPost = JSON.stringify(p);
+  EditPost(postID,p);
+}
+function EditPost(postID,postObj){
+  var jsonPost = JSON.stringify(postObj);
   console.log(jsonPost);
-  req.open('PATCH', url + '/posts/' + retweetedPost.id);
+  req.open('PATCH', url + '/posts/' + postID);
   req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   req.onreadystatechange = function () {
     var po = JSON.parse(req.responseText);
@@ -420,7 +385,7 @@ function retweetPost(e){
       console.log(po);
     }
   };
-  req.send(jsonPost);
+  req.send(jsonPost);  
 }
 function addPost(inputId) {
   var text = document.getElementById(inputId).value;
@@ -437,25 +402,12 @@ function addPost(inputId) {
   addPostReq(newPost);
 }
 function displayProfile(){
-  id=localStorage.getItem('currentUser');
-  req.open('GET', url + '/users/' +id);
-  req.send();
-  req.onreadystatechange = () => {
-    if (req.readyState == 4) {
-      if (req.status == 200) {
-        var u = JSON.parse(req.responseText);
-        
-        document.getElementById("profile-user-image").src=u.img;
-        document.getElementById("profile-user-name").innerText=u.name;
-        document.getElementById("name-span").innerText=u.name;
-        document.getElementById("profile-user-username").innerText=u.userName;
-        document.getElementById("profile-following").innerText=u.following;
-        document.getElementById("profile-followers").innerText=u.followers;
-      }
-    } else {
-      return undefined;
-    }
-  };
+  document.getElementById("profile-user-image").src=user.img;
+  document.getElementById("profile-user-name").innerText=user.name;
+  document.getElementById("name-span").innerText=user.name;
+  document.getElementById("profile-user-username").innerText=user.userName;
+  document.getElementById("profile-following").innerText=user.following;
+  document.getElementById("profile-followers").innerText=user.followers;
 }
 
 function goToPost(_id) {

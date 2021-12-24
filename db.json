@@ -7,7 +7,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 2,
+      "likesNum": 1,
       "retweetsNum": 1,
       "user": {
         "id": "3",
@@ -22,8 +22,7 @@
       },
       "comments": [],
       "usersLikes": [
-        2,
-        1
+        2
       ],
       "usersRetweets": [
         2
@@ -65,7 +64,7 @@
       "video": "https://www.youtube.com/watch?v=xozNnytRE6E",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 1,
+      "likesNum": 0,
       "retweetsNum": 1,
       "user": {
         "id": "1",
@@ -79,9 +78,7 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [
-        1
-      ],
+      "usersLikes": [],
       "usersRetweets": [
         1
       ]
@@ -182,8 +179,8 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 0,
-      "retweetsNum": 0,
+      "likesNum": 1,
+      "retweetsNum": 1,
       "user": {
         "id": "1",
         "userName": "Eman@Salah",
@@ -196,8 +193,12 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [],
-      "usersRetweets": []
+      "usersLikes": [
+        1
+      ],
+      "usersRetweets": [
+        1
+      ]
     }
   ],
   "comments": [
