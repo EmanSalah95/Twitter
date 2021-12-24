@@ -293,7 +293,12 @@ header .profile .fa-ellipsis-h {
 }
 .post-footer > button > i {
   border-radius: 50%;
+  padding: 10px;
 }
+.post-footer > button > label {
+  padding: 10px;
+}
+
 .reply-btn .retweet-btn .like-btn .share-btn:hover i,
 label {
   padding: 0 8px;
@@ -692,10 +697,6 @@ label {
   height: 35px;
 }
 
-.reply-btn:hover {
-  background-color: #177cc0;
-  color: white;
-}
 .div-icon-post {
   background-color: #15202b;
   color: white;
