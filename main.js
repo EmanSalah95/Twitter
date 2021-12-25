@@ -474,7 +474,7 @@ function HandleIconPost(e) {
 
   var userID = selectedPost.getElementsByClassName('user-id')[0].innerText; //to get user id from hidden label
 
-  // var user = getUser(userID);
+  var user = getUser(userID);
   req.open('GET', url + '/users/' + userID);
   req.send();
   req.onreadystatechange = () => {
@@ -545,6 +545,8 @@ function addBookmark(e, _postId) {
 
 function displayBookmarks() {
   document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
+  document.getElementById("username-span").innerText=user.userName;
+
   var i = 0;
 
   var bookmarkIDs = [];
