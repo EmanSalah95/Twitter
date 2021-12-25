@@ -59,7 +59,8 @@ function loadPage(page) {
       getPosts();
     }, 450);
     setTimeout(() => {
-      displayPosts(posts);
+      let filtered= posts.filter( item => item.user.id==user.id);
+      displayPosts(filtered);
     }, 500);
   }
 
