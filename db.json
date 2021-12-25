@@ -7,8 +7,8 @@
       "video": "",
       "image": "",
       "commentsNum": 1,
-      "likesNum": 1,
-      "retweetsNum": 0,
+      "likesNum": 0,
+      "retweetsNum": 1,
       "user": {
         "id": "3",
         "userName": "Heba@Ghazali",
@@ -21,10 +21,10 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [
+      "usersLikes": [],
+      "usersRetweets": [
         2
-      ],
-      "usersRetweets": []
+      ]
     },
     {
       "id": "2",

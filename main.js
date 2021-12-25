@@ -22,7 +22,7 @@ var postOb = {
 };
 
 function loadPage(page) {
-  localStorage.setItem('currentUser', '2');
+  // localStorage.setItem('currentUser', '2');
   getUser(localStorage.getItem('currentUser')); //set global user object of current user
   if (page == 'home') {
     setTimeout(() => {
@@ -461,7 +461,7 @@ function displayWriteReply() {
            <input
              id="write-header"
              type="text"
-             placeholder="What's happening?"
+             placeholder="write your reply..."
            />
        
          </div>

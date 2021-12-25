@@ -1,0 +1,210 @@
+.log-parent, .signn-twitter, .modal-des .modal-content ,select {
+    background-color: #15202b;
+    color: #fff;
+}
+
+.log-parent .log-icon {
+    background-image: url("https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png");
+    height: 600px;
+}
+
+.log-parent .log-icon i{
+    color: white ;
+    padding-left: 200px;
+    padding-top: 200px;
+    font-size: 200px;
+}
+
+.log-parent .form-icon {
+    margin-top: 40px;
+    padding-left: 30px;
+}
+
+.log-parent .form-icon p i {
+    color: white ;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.log-parent .form-icon h1 {
+    font-size: 60px;
+    font-family: inherit;
+}
+
+.log-parent .form-icon h3 {
+    font-size: 32px;
+    margin: 15px auto;
+}
+
+.sign-twitter button {
+    width: 260px;
+    height: 30px;
+    border-radius: 20px;
+    border-color: rgb(212, 209, 209);
+    background-color: white;
+    border: none ;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.select {
+    padding: 5px;
+    width: 130px;
+    border-color: #2b3742;
+    margin-right: 14px;
+    outline: none;
+}
+
+.log-parent .form-icon .log-log,
+.sign-twitter .sign-forget {
+    color: #1DA1F2;
+    background-color: #15202b;
+    border: 1px solid #2b3742 ;
+}
+
+.log-parent .form-icon .log-phone {
+    background-color: #1DA1F2 ;
+    color: white;
+    margin-bottom: 25px;
+    border: none;
+}
+
+.sign-twitter .log-google:hover {
+    background-color: rgb(236, 246, 252);
+}
+
+.sign-twitter .log-apple:hover {
+    background-color: rgb(233, 232, 232);
+}
+
+.sign-twitter button i {
+    padding-right: 8px;
+    font-size: 20px;
+}
+
+.sign-twitter .log-google i {
+    color: #1DA1F2;
+}
+
+.sign-twitter .simple-txt {
+    padding-left: 120px;
+    margin: 10px auto;
+}
+
+.log-parent .form-icon .simple-txtt{
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+/* Start Sign up Form */
+.signn-twitter {
+    margin-top: 40px;
+    margin-left: 400px;
+    width: 600px;
+    border-radius: 20px;
+}
+
+.signn-twitter .sign-icon {
+    padding-left: 30px; 
+}
+
+.formm-icon {
+    padding-left: 160px;
+    padding-bottom: 50px;
+}
+
+.formm-icon h4 {
+    padding: 28px 0px;
+}
+
+.signn-twitter .sign-icon .twitter-icon {
+    color: white ;
+    padding-left: 230px;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.signn-twitter .sign-icon .del-icon {
+    padding:7px ; 
+}
+
+.signn-twitter .sign-icon .del-icon:hover {
+    border-radius: 50%; 
+    background-color: rgb(63, 63, 63);
+    cursor: pointer;
+}
+
+.sign-twitter input {
+    background-color: #15202b;
+    color: white;
+    border:1px solid #2b3742;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px ;
+    width: 280px;
+}
+
+input:focus {
+    border: 2px solid rgb(32, 32, 143);
+    outline: none;
+}
+
+#checkbox-inp {
+    display: inline-block;
+    margin-left: -120px;
+}
+
+.checkbox-val{margin-left: -125px; }
+/* End Sign up Form */
+
+input.success {
+    border: 2px solid green;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+/* End Sign in form form scratch */
+
+/* Start Style For Modal */
+input.active{
+    background-color: #15202b;
+}
+/* End Style For Modal */
+
+footer .footer-link a {
+    font-size: 10px;
+    font-weight: 550;
+    color: #2b3742;
+    text-decoration: none;
+}
+
+footer .footer-link a:hover {
+    text-decoration: underline;
+}
+
+/* Start Style for handle icon in any post ... */
+/* .div-icon-post {
+    background-color: #15202b;
+    color: white;
+    width: 320px;
+    padding: 15px 5px;
+}
+
+.div-icon-post ul li {
+    list-style: none;
+    line-height: 2.5em;
+    font-size: 20px;
+}
+
+.div-icon-post ul li i {
+    margin-right: 10px;
+    color: #494d52;
+    font-size: 20px;
+} */
+/* End Style for handle icon in any post ... */
