@@ -294,17 +294,17 @@ function displayCard(e, _id) {
   card.setAttribute('class', 'profile-card');
   card.style.display = 'block';
   card.innerHTML = `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;" onclick="stopParentC">
-    <img id="selected-user-img" class="logged-user-image" src=${user.img}/>
-    <h6 id="selected-user-name" class="name-style">${user.name}</h6>
-    <span id="selected-user-username" class="username-style" style="color:#8899A6;">${user.userName}</span>
+    <img onclick="goTo(event,'profilepage.html')" id="selected-user-img" class="logged-user-image" src=${user.img}/>
+    <h6 id="selected-user-name" class="name-style" onclick="goTo(event,'profilepage.html')">${user.name}</h6>
+    <span id="selected-user-username" class="username-style" style="color:#8899A6;" onclick="goTo(event,'profilepage.html')">${user.userName}</span>
 </div>
 <button class="card-follow-btn" onclick="toggleFollow(event)">Follow</button>
 <p id="selected-user-bio" style="clear: both;padding: 5% 0%;line-height: 1.5em;">
 ${user.bio}
 </p>
 <div>
-    <h4 id="selected-user-following" style="float: left;margin-right: 10%;">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
-    <h4 id="selected-user-followers">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
+    <h4 id="selected-user-following" style="float: left;margin-right: 10%;" onclick="goTo(event,'WhoToFollow.html')">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
+    <h4 id="selected-user-followers" onclick="goTo(event,'WhoToFollow.html')">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
 </div>`;
   selectedPost.appendChild(card);
   card.onmouseleave = function () {
@@ -477,7 +477,7 @@ function displayWriteReply() {
          <img
            class="profile-img"
            id="profile"
-           style="border-radius: 50%"
+           style="border-radius: 50% ; width:60px"
            src=${user.img}
            alt="profile image"
          />
@@ -644,4 +644,10 @@ function displayNews(){
     <div>
     `
   }
+}
+
+function goTo(event,pageUrl) {
+  event.stopPropagation();
+  location.assign(pageUrl);
+  
 }
