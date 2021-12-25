@@ -23,7 +23,10 @@ var postOb = {
 
 function loadPage(page) {
   // localStorage.setItem('currentUser', '2');
-  getUser(localStorage.getItem('currentUser')); //set global user object of current user
+  var loggeduserId=localStorage.getItem('currentUser')? 
+       localStorage.getItem('currentUser'):
+       sessionStorage.getItem('currentUser');
+  getUser(loggeduserId); //set global user object of current user
   if (page == 'home') {
     setTimeout(() => {
       getPosts();

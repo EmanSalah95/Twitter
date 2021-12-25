@@ -5,7 +5,7 @@ var url = 'http://localhost:3000';
 function HandleSign () 
 {
     
-    window.open ("./twitter-log.html" , " _self " )
+    location.assign("./twitter-log.html" );
 }
 
 // End function to handle sign in and open sign in form in new window
@@ -92,9 +92,11 @@ function CompleteSignIn() {
           for (var i =0 ; i < users.length ;  i++) {
                 if (fieldValue == users[i].email && usrName == users[i].userName)
                 {
-                    HandleStoreData();
-                    location.assign("../index.html");
+                    // window.open("https://fontawesome.com/v5.15/icons/times?style=solid" , "_self")
                     
+                    console.log("founded user", users[i].id);
+                    HamndleStoreData(users[i].id);
+                    location.assign('../index.html');
                     // localStorage.setItem ("currentUser", users[i].id)
                     break ;
                 }
@@ -112,35 +114,25 @@ function CompleteSignIn() {
 // End Handle Request and sign in
 
 // Start Handle Store data in local or session Storage
-function HandleStoreData ()
+function HamndleStoreData (userId)
 {
-    var checkboxInpVal = document.getElementById ("checkbox-inp")
-
-    req.open('GET', url + '/users');
-    req.send();
-    req.onreadystatechange = () => {
-      if (req.readyState == 4) {
-        if (req.status == 200) {
-          users = JSON.parse(req.responseText);
-          console.log(users);
-          for (var i =0 ; i < users.length ;  i++) {
-              
-            if (checkboxInpVal.checked)
+    var checkboxInpVal = document.getElementById ("checkbox-inp");
+    console.log("is checked ?",checkboxInpVal.checked);
+    if (checkboxInpVal.checked)
             {
-                localStorage.setItem ("currentUser", users[i].id)
-                console.log("user ID:" + users[i].id);
-                break;
+                localStorage.setItem ("currentUser", userId);
+                sessionStorage.clear();
+                console.log("user ID in local:" + userId);
             }
 
             else 
             {
-                sessionStorage.setItem ("currentUser", users[i].id)
-                console.log("hello");
-            }             
-        }
-    }
-    }
-};
+                sessionStorage.setItem ("currentUser", userId);
+                localStorage.clear();
+                console.log("hello session",userId);
+            }  
+    
+
 } 
 // End Handle Store data in local or session Storage
 
