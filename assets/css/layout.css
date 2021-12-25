@@ -11,9 +11,12 @@ main {
   right: 10%;
   left: 26%;
   display: flex;
+  min-height: 100vh;
 }
 
-main .homepage,.bookmarkspage,.profile-page {
+main .homepage,
+.bookmarkspage,
+.profile-page {
   width: 60%;
   border: 1px solid #38444d;
 }

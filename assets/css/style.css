@@ -293,7 +293,12 @@ header .profile .fa-ellipsis-h {
 }
 .post-footer > button > i {
   border-radius: 50%;
+  padding: 10px;
 }
+.post-footer > button > label {
+  padding: 10px;
+}
+
 .reply-btn .retweet-btn .like-btn .share-btn:hover i,
 label {
   padding: 0 8px;
@@ -320,11 +325,11 @@ label {
 .share-btn:hover i {
   background-color: #1d9cf017;
 }
-.like-btn:hover{
-  color: #CC2275;
+.like-btn:hover {
+  color: #cc2275;
   opacity: 1;
 }
-.like-btn:hover i{
+.like-btn:hover i {
   background-color: #2f2438c2;
 }
 #timeline-options-btn {
@@ -396,6 +401,7 @@ label {
 .settings-btn {
   border-radius: 50%;
   width: 35px;
+  height: 35px;
   font-size: 18px;
   color: #8899a6;
   cursor: pointer;
@@ -458,19 +464,19 @@ label {
 #selected-user-followers:hover {
   text-decoration: underline;
 }
-.liked-post-style>i{
-  color: #CC2275;
+.liked-post-style > i {
+  color: #cc2275;
   opacity: 1;
 }
-.liked-post-style>label{
-  color: #CC2275;
+.liked-post-style > label {
+  color: #cc2275;
   opacity: 1;
 }
-.retweeted-post-style>i{
+.retweeted-post-style > i {
   color: #06996c;
   opacity: 1;
 }
-.retweeted-post-style>label{
+.retweeted-post-style > label {
   color: #06996c;
   opacity: 1;
 }
@@ -615,19 +621,19 @@ label {
 }
 
 /* profile page */
-.user-profile-image{
+.user-profile-image {
   position: absolute;
   border-radius: 50%;
   width: 30%;
   height: 155px;
   border-width: 4px;
   border-style: solid;
-  border-color: #15202B;
-  top:60%;
-  left:5%;
+  border-color: #15202b;
+  top: 60%;
+  left: 5%;
 }
 
-.edit-profile-btn{
+.edit-profile-btn {
   float: right;
   margin-top: 3%;
   margin-right: 2%;
@@ -639,30 +645,30 @@ label {
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
   border-style: solid;
-  border-color: #3D5466;
-  background-color: #15202B;
+  border-color: #3d5466;
+  background-color: #15202b;
   -webkit-border-radius: 25px;
   font-weight: bolder;
   font-size: 15px;
 }
-.edit-profile-btn:hover{
-  background-color: #2B3640;
+.edit-profile-btn:hover {
+  background-color: #2b3640;
 }
-.Tweets-options{
+.Tweets-options {
   padding: 0% 10%;
   display: flex;
   flex-direction: row;
   /* justify-content: space-around; */
   list-style: none;
   border-bottom-width: 1px;
-  border-bottom-style:solid;
+  border-bottom-style: solid;
   border-bottom-color: #38444d;
 }
-.Tweets-options li{
+.Tweets-options li {
   padding: 4%;
 }
-.Tweets-options li:hover{
-  background-color: #2B3640;
+.Tweets-options li:hover {
+  background-color: #2b3640;
 }
 .back-btn {
   font-size: 10px;
@@ -681,7 +687,7 @@ label {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.replyContainer{
+.replyContainer {
   height: auto;
 }
 
@@ -691,11 +697,6 @@ label {
   height: 35px;
 }
 
-.reply-btn:hover {
-  background-color: #177cc0;
-  color: white;
-
-}
 .div-icon-post {
   background-color: #15202b;
   color: white;
@@ -705,6 +706,7 @@ label {
   border: 1px solid #0e171f;
   z-index: 2;
   position: absolute;
+  right: 0;
 }
 
 .div-icon-post ul li {
