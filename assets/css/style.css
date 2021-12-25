@@ -121,7 +121,8 @@ header .profile .profile-picture {
 }
 
 header .profile .profile-picture img {
-  width: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
 
