@@ -8,7 +8,7 @@
       "image": "",
       "commentsNum": 1,
       "likesNum": 1,
-      "retweetsNum": 1,
+      "retweetsNum": 0,
       "user": {
         "id": "3",
         "userName": "Heba@Ghazali",
@@ -24,9 +24,7 @@
       "usersLikes": [
         2
       ],
-      "usersRetweets": [
-        2
-      ]
+      "usersRetweets": []
     },
     {
       "id": "2",
@@ -34,9 +32,9 @@
       "text": "Don't let your dreams be dreams",
       "video": "",
       "image": "https://images.unsplash.com/photo-1639771359448-e90840f3eec8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      "commentsNum": 2,
-      "likesNum": 2,
-      "retweetsNum": 0,
+      "commentsNum": 4,
+      "likesNum": 3,
+      "retweetsNum": 1,
       "user": {
         "id": "4",
         "userName": "Raghda@Raghda",
@@ -51,9 +49,12 @@
       "comments": [],
       "usersLikes": [
         4,
-        1
+        1,
+        2
       ],
-      "usersRetweets": []
+      "usersRetweets": [
+        2
+      ]
     },
     {
       "id": "3",
@@ -205,7 +206,7 @@
       "video": "",
       "image": "",
       "commentsNum": 0,
-      "likesNum": 0,
+      "likesNum": 1,
       "retweetsNum": 0,
       "user": {
         "id": "1",
@@ -219,7 +220,9 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [],
+      "usersLikes": [
+        2
+      ],
       "usersRetweets": []
     }
   ],
@@ -298,6 +301,62 @@
       "usersLikes": [],
       "usersRetweets": [],
       "postId": "2"
+    },
+    {
+      "id": "998",
+      "createdAt": "2021-12-25T08:55:00.901Z",
+      "text": "wow",
+      "video": "",
+      "image": "",
+      "commentsNum": 0,
+      "likesNum": 0,
+      "retweetsNum": 0,
+      "user": {
+        "id": "2",
+        "userName": "Esraa@Sayed",
+        "name": "Esraa Sayed",
+        "email": "Esraa@Sayed.com",
+        "password": "1234567",
+        "img": "https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "bio": "Front-End developer Engineer .",
+        "following": 0,
+        "followers": 0,
+        "bookmarks": [
+          2
+        ]
+      },
+      "comments": [],
+      "usersLikes": [],
+      "usersRetweets": [],
+      "postId": "2"
+    },
+    {
+      "id": "583",
+      "createdAt": "2021-12-25T12:56:15.174Z",
+      "text": "",
+      "video": "",
+      "image": "",
+      "commentsNum": 0,
+      "likesNum": 0,
+      "retweetsNum": 0,
+      "user": {
+        "id": "2",
+        "userName": "Esraa@Sayed",
+        "name": "Esraa Sayed",
+        "email": "Esraa@Sayed.com",
+        "password": "1234567",
+        "img": "https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "bio": "Front-End developer Engineer .",
+        "following": 0,
+        "followers": 0,
+        "bookmarks": [
+          2
+        ]
+      },
+      "comments": [],
+      "usersLikes": [],
+      "usersRetweets": [],
+      "postId": "2"
     }
   ],
   "users": [
@@ -326,9 +385,7 @@
       "bio": "Front-End developer Engineer .",
       "following": 0,
       "followers": 0,
-      "bookmarks": [
-        2
-      ]
+      "bookmarks": []
     },
     {
       "id": "3",

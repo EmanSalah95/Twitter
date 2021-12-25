@@ -222,7 +222,7 @@ function displayPosts(_posts) {
     },${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
       post.likesNum
     }</label></button>
-            <button class="share-btn" title="Share" onclick='addBookmark(event,${
+            <button class="share-btn" id="share-btn-${i}" title="Share" onclick='addBookmark(event,${
               post.id
             })'><i class="fas fa-sign-out-alt"
                 style="transform: rotate(-90deg);"></i></button>
@@ -248,7 +248,13 @@ function displayPosts(_posts) {
     } else {
       retweet.classList.remove('retweeted-post-style');
     }
-
+    var bookmarked= document.getElementById(`share-btn-${i}`);
+    if(user.bookmarks.includes(parseInt(post.id))){
+      bookmarked.classList.add('bookmarked-post-style');
+    }
+    else{
+      bookmarked.classList.remove('bookmarked-post-style');
+    }
     i++;
   });
 }
@@ -459,7 +465,7 @@ function displayWriteReply() {
            />
        
          </div>
-         <button class="primary-btn reply-btn" onclick="addComment('write-header')">Tweet</button>   
+         <button class="primary-btn tweet-btn" style="width:20%" onclick="addComment('write-header')">Reply</button>   
         </div>
     `;
 }
@@ -527,20 +533,32 @@ function addComment(inputId) {
 function addBookmark(e, _postId) {
   e.stopPropagation();
   console.log('bookmark', _postId ,user);
+  var isBookmarked = document.getElementById(e.target.parentElement.id); //like btn id
 
     if (!user.bookmarks.includes(_postId)) {
+      isBookmarked.classList.add('bookmarked-post-style');
       user.bookmarks.push(_postId);
       console.log(">>>",user);
-      var userObj={};
-      userObj.bookmarks = user.bookmarks;
-      console.log("oc",userObj);
+      // var userObj={};
+      // userObj.bookmarks = user.bookmarks;
+      // console.log("oc",userObj);
 
-      req.open('PATCH', url + '/users/' + user.id);
+      // req.open('PATCH', url + '/users/' + user.id);
 
-      req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      // req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
-      req.send(JSON.stringify(userObj));
+      // req.send(JSON.stringify(userObj));
     }
+    else{
+      isBookmarked.classList.remove('bookmarked-post-style');
+      user.bookmarks.splice(user.bookmarks.indexOf(_postId),1);
+    }
+    var userObj={};
+    userObj.bookmarks = user.bookmarks;
+    console.log("oc",userObj);
+    req.open('PATCH', url + '/users/' + user.id);
+    req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    req.send(JSON.stringify(userObj));
 }
 
 function displayBookmarks() {
