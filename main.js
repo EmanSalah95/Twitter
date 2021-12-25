@@ -21,7 +21,7 @@ var postOb = {
   usersRetweets: [],
 };
 
-function news(category,image,content){
+function News(category,image,content){
   this.category=category,
   this.image = image,
   this.content = content
@@ -432,6 +432,7 @@ function addPost(inputId) {
   addRequest(url+"/posts",newPost);
 }
 function displayProfile() {
+  document.getElementById('profile-cover-image').src="./assets/images/flowers.jpg";
   document.getElementById('profile-user-image').src = user.img;
   document.getElementById('profile-user-name').innerText = user.name;
   document.getElementById('name-span').innerText = user.name;
@@ -624,9 +625,9 @@ function logout() {
 
 function displayNews(){
   var NewsArr=[];
-  NewsArr.push(new news("sports","https://pbs.twimg.com/semantic_core_img/1471063698596790272/sUFmtGGA?format=jpg&name=small","The Africa Cup of Nations due to be held in January 2022 has been indefinitely postponed, the Confederation of African Football has confirmed"));
-  NewsArr.push(new news("news","https://pbs.twimg.com/media/FHdDaD1XMAUz46r?format=jpg&name=small","إطلاق أقوى تليسكوب في التاريخ لاستكشاف الفضاء"));
-  NewsArr.push(new news("health","https://pbs.twimg.com/semantic_core_img/1366513874350923778/f6PSgcbJ?format=png&name=small","Experts say masks are safe and effective in preventing spread of COVID-19"));
+  NewsArr.push(new News("sports","https://pbs.twimg.com/semantic_core_img/1471063698596790272/sUFmtGGA?format=jpg&name=small","The Africa Cup of Nations due to be held in January 2022 has been indefinitely postponed, the Confederation of African Football has confirmed"));
+  NewsArr.push(new News("news","https://pbs.twimg.com/media/FHdDaD1XMAUz46r?format=jpg&name=small","إطلاق أقوى تليسكوب في التاريخ لاستكشاف الفضاء"));
+  NewsArr.push(new News("health","https://pbs.twimg.com/semantic_core_img/1366513874350923778/f6PSgcbJ?format=png&name=small","Experts say masks are safe and effective in preventing spread of COVID-19"));
 
   var NewsDiv= document.getElementById("news-div");
   for(var i=0;i<NewsArr.length;i++)
