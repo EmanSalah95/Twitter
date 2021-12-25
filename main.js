@@ -67,9 +67,18 @@ function loadPage(page) {
   setTimeout(() => {
     getUsers();
   }, 600);
-  setTimeout(() => {
-    displayUsers();
-  }, 700);
+  
+  if(page =='whoTofollow')
+  {
+    setTimeout(() => {
+      displayUsers(users.length);
+    }, 700);  
+  }
+  else{
+    setTimeout(() => {
+      displayUsers(3);
+    }, 700);
+  }
 }
 
 function displayAddTweet() {
@@ -289,12 +298,12 @@ ${user.bio}
   };
 }
 
-function displayUsers() {
+function displayUsers(usersLength) {
   console.log('********users in display********', users);
   var usersEl = document.createElement('section');
   usersEl.classList.add('users-section');
   usersEl.innerHTML = `<p class="section-title">Who to follow</p>`;
-  var usersList = users.slice(0, 3); //get first 3 users
+  var usersList = users.slice(0, usersLength); //get first 3 users
   usersList.forEach(user => {
     var userEl = document.createElement('div');
     userEl.classList.add('section-user');
@@ -316,7 +325,7 @@ function displayUsers() {
     usersEl.appendChild(userEl);
   });
   // document.getElementById('homepage').appendChild(usersEl);
-  usersEl.innerHTML += `<div class="section-user"> <p class='moreFollowers'>Show more</p></div>`;
+  usersEl.innerHTML += `<div class="section-user"> <a class='moreFollowers' href="WhoToFollow.html">Show more</a></div>`;
   document.getElementById('asideUsers').appendChild(usersEl);
 }
 
