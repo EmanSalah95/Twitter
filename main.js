@@ -21,6 +21,12 @@ var postOb = {
   usersRetweets: [],
 };
 
+function news(category,image,content){
+  this.category=category,
+  this.image = image,
+  this.content = content
+};
+
 function loadPage(page) {
   // localStorage.setItem('currentUser', '2');
   var loggeduserId=localStorage.getItem('currentUser')? 
@@ -70,7 +76,9 @@ function loadPage(page) {
   setTimeout(() => {
     getUsers();
   }, 600);
-  
+  setTimeout(()=>{
+    displayNews();
+  },750)
   if(page =='whoTofollow')
   {
     setTimeout(() => {
@@ -605,3 +613,25 @@ function displayBookmarks() {
     displayPosts(bmPosts); // display this array of bookmarke posts
 }
 
+function displayNews(){
+  var NewsArr=[];
+  NewsArr.push(new news("sports","https://pbs.twimg.com/semantic_core_img/1471063698596790272/sUFmtGGA?format=jpg&name=small","The Africa Cup of Nations due to be held in January 2022 has been indefinitely postponed, the Confederation of African Football has confirmed"));
+  NewsArr.push(new news("news","https://pbs.twimg.com/media/FHdDaD1XMAUz46r?format=jpg&name=small","إطلاق أقوى تليسكوب في التاريخ لاستكشاف الفضاء"));
+  NewsArr.push(new news("news","https://pbs.twimg.com/semantic_core_img/1366513874350923778/f6PSgcbJ?format=png&name=small","Experts say masks are safe and effective in preventing spread of COVID-19"));
+
+  var NewsDiv= document.getElementById("news-div");
+  for(var i=0;i<NewsArr.length;i++)
+  {
+    console.log(NewsArr)
+    NewsDiv.style.padding="15px 0px";
+    NewsDiv.innerHTML+=`
+    <div class="news-content">
+    <h4 style="font-size: 15px;font-weight: lighter;color: #8899a6;">${NewsArr[i].category}</h4>
+    <div style="display: flex;flex-direction: row;">
+      <p>${NewsArr[i].content}</p>
+      <img style="width: 70px;height: 60px;border-radius: 15px;" src="${NewsArr[i].image}"/>
+    </div>
+    <div>
+    `
+  }
+}

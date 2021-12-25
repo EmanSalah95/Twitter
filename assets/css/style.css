@@ -729,3 +729,12 @@ label {
   color: #494d52;
   font-size: 20px;
 }
+
+.news-content{
+  margin: 5px 0;
+  width: 100%;
+  padding: 5px 16px;
+}
+.news-content:hover{
+  background-color: rgba(255, 255, 255, 0.02);
+}
