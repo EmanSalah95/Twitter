@@ -7,7 +7,7 @@
       "video": "",
       "image": "",
       "commentsNum": 1,
-      "likesNum": 1,
+      "likesNum": 0,
       "retweetsNum": 1,
       "user": {
         "id": "3",
@@ -21,9 +21,7 @@
         "followers": 0
       },
       "comments": [],
-      "usersLikes": [
-        2
-      ],
+      "usersLikes": [],
       "usersRetweets": [
         2
       ]

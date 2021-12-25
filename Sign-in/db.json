@@ -1,0 +1,174 @@
+{
+  "posts": [
+    {
+      "id":"1",
+      "createdAt": "2021-12-12T10:36:15.425Z",
+      "text":"no gain without pain",
+      "video":"",
+      "image":"",
+      "commentsNum":0,
+      "likesNum":0,
+      "retweetsNum":0,
+      "user": {
+        "id": "3",
+        "userName": "Heba@Ghazali",
+        "name": "Heba Ghazali",
+        "email":"Heba@Ghazali.com",
+        "password":"12345678",
+        "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "bio":"Front-End developer Engineer .",
+        "following":0,
+        "followers":0
+      },
+      "comments":[],
+      "usersLikes":[]
+    },
+    {
+        "id":"2",
+        "createdAt": "2021-12-12T10:36:15.425Z",
+        "text":"Don't let your dreams be dreams",
+        "video":"",
+        "image":"https://images.unsplash.com/photo-1639771359448-e90840f3eec8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "commentsNum":0,
+        "likesNum":0,
+        "retweetsNum":0,
+        "user":{
+          "id": "4",
+          "userName": "Raghda@Raghda",
+          "name": "Raghda",
+          "email":"Raghda@Raghda.com",
+          "password":"123456789",
+          "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+          "bio":"Front-End developer Engineer .",
+          "following":0,
+          "followers":0
+        },
+        "comments":[],
+        "usersLikes":[]
+      },
+      {
+        "id":"3",
+        "createdAt": "2021-12-12T10:36:15.425Z",
+        "text":"a little act of selfless sparkes to another",
+        "video":"https://www.youtube.com/watch?v=xozNnytRE6E",
+        "image":"",
+        "commentsNum":0,
+        "likesNum":0,
+        "retweetsNum":0,
+        "user":{
+          "id": "1",
+          "userName": "Eman@Salah",
+          "name": "Eman Salah",
+          "email":"Eman@gmail.com",
+          "password":"123456",
+          "img":"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+          "bio":"Front-End developer .",
+          "following":0,
+          "followers":0
+        },
+        "comments":[],
+        "usersLikes":[]
+      }
+      ,
+      {
+        "id":"4",
+        "createdAt": "2021-12-15T10:36:15.425Z",
+        "text":"together we can ^^",
+        "video":"",
+        "image":"",
+        "commentsNum":0,
+        "likesNum":0,
+        "retweetsNum":0,
+        "user": {
+          "id": "2",
+          "userName": "Esraa@Sayed",
+          "name": "Esraa Sayed",
+          "email":"Esraa@Sayed.com",
+          "password":"1234567",
+          "img":"https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+          "bio":"Front-End developer Engineer .",
+          "following":0,
+          "followers":0
+        },
+        "comments":[],
+        "usersLikes":[]
+      }
+      ,
+      {
+        "id":"5",
+        "createdAt": "2021-12-13T10:36:15.425Z",
+        "text":"the best is yet to come :)",
+        "video":"",
+        "image":"",
+        "commentsNum":0,
+        "likesNum":0,
+        "retweetsNum":0,
+        "user": {
+          "id": "1",
+          "userName": "Eman@Salah",
+          "name": "Eman Salah",
+          "email":"Eman@gmail.com",
+          "password":"123456",
+          "img":"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+          "bio":"Front-End developer .",
+          "following":0,
+          "followers":0
+        },
+        "comments":[],
+        "usersLikes":[]
+      }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users":[
+       {
+    "id": "1",
+    "userName": "Eman@Salah",
+    "name": "Eman Salah",
+    "email":"Eman@gmail.com",
+    "password":"123456",
+    "img":"https://images.unsplash.com/photo-1639765664405-9f95cf5ddd28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80",
+    "bio":"Front-End developer .",
+    "following":0,
+    "followers":0
+  },
+  {
+    "id": "2",
+    "userName": "Esraa@Sayed",
+    "name": "Esraa Sayed",
+    "email":"Esraa@Sayed.com",
+    "password":"1234567",
+    "img":"https://images.unsplash.com/photo-1632600396517-4d5899570ab6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "bio":"Front-End developer Engineer .",
+    "following":0,
+    "followers":0
+  },
+  {
+    "id": "3",
+    "userName": "Heba@Ghazali",
+    "name": "Heba Ghazali",
+    "email":"Heba@Ghazali.com",
+    "password":"12345678",
+    "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "bio":"Front-End developer Engineer .",
+    "following":0,
+    "followers":0
+  },
+  {
+    "id": "4",
+    "userName": "Raghda@Raghda",
+    "name": "Raghda",
+    "email":"Raghda@Raghda.com",
+    "password":"123456789",
+    "img":"https://images.unsplash.com/photo-1639748530424-9f06a93220ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "bio":"Front-End developer Engineer .",
+    "following":0,
+    "followers":0
+  }
+]
+}
