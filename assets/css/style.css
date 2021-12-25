@@ -98,7 +98,7 @@ header .tweet-btn {
   transition: background-color 0.2s;
 }
 
-header .tweet-btn:hover {
+.tweet-btn:hover {
   background-color: #177cc0;
 }
 
@@ -478,6 +478,10 @@ label {
 }
 .retweeted-post-style > label {
   color: #06996c;
+  opacity: 1;
+}
+.bookmarked-post-style > i {
+  color: #1d9bf0;
   opacity: 1;
 }
 .logged-user-image {
