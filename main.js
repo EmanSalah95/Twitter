@@ -22,7 +22,7 @@ var postOb = {
 };
 
 function loadPage(page) {
-  localStorage.setItem('currentUser', '1');
+  localStorage.setItem('currentUser', '2');
   getUser(localStorage.getItem('currentUser')); //set global user object of current user
   if (page == 'home') {
     setTimeout(() => {
@@ -224,7 +224,7 @@ function displayPosts(_posts) {
     }</label></button>
             <button class="share-btn" title="Share" onclick='addBookmark(event,${
               post.id
-            },${user.id})'><i class="fas fa-sign-out-alt"
+            })'><i class="fas fa-sign-out-alt"
                 style="transform: rotate(-90deg);"></i></button>
           </footer>
 
@@ -522,5 +522,54 @@ function addComment(inputId) {
   params.commentsNum=currentTweet.commentsNum+1;
   setTimeout(()=>{ addRequest(url+"/comments",newComment)} ,100);
   setTimeout(()=>{EditPost(currentTweet.id,params)} ,250);
+}
+
+function addBookmark(e, _postId) {
+  e.stopPropagation();
+  console.log('bookmark', _postId ,user);
+
+    if (!user.bookmarks.includes(_postId)) {
+      user.bookmarks.push(_postId);
+      console.log(">>>",user);
+      var userObj={};
+      userObj.bookmarks = user.bookmarks;
+      console.log("oc",userObj);
+
+      req.open('PATCH', url + '/users/' + user.id);
+
+      req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+      req.send(JSON.stringify(userObj));
+    }
+}
+
+function displayBookmarks() {
+  document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
+  var i = 0;
+
+  var bookmarkIDs = [];
+  // users.forEach(user => {
+  //   var bm = user.bookmarks;
+
+  //   bm.forEach(IDs => {
+  //     bookmarkIDs.push(IDs.toString());
+  //   });
+  // });
+
+    var bm = user.bookmarks;// bookmarks for current user 
+
+    bm.forEach(IDs => {
+      bookmarkIDs.push(IDs.toString());
+    });
+   
+    var bmPosts=[];
+    posts.forEach(post => {
+      if (bookmarkIDs.includes(post.id))
+      {
+        bmPosts.push(post);
+      }
+    });
+
+    displayPosts(bmPosts); // display this array of bookmarke posts
 }
 
