@@ -4,7 +4,6 @@ var posts = [],
   users = [],
   user = {},
   post = {},
-  currentTweet={},
   comments=[];
 
 var postOb = {
@@ -101,19 +100,6 @@ function getComments(condition='') {
   };
 }
 
-function getPost(id) {
-  var url=`${url}/posts`;
-  req.open("GET", url + "/posts?id="+id);
-  req.send();
-  req.onreadystatechange = () => {
-    if (req.readyState == 4) {
-      if (req.status == 200) {
-        currentTweet = JSON.parse(req.responseText)[0];
-        console.log("tweeeet",currentTweet);
-      }
-    }
-  };
-}
 
 
 function getUsers() {
@@ -144,8 +130,8 @@ function getUser(id) {
   };
 }
 
-function addPostReq(_postOb) {
-  req.open("POST", url + "/posts");
+function addRequest(_url,_postOb) {
+  req.open("POST", _url);
   console.log(JSON.stringify(_postOb));
   req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
@@ -156,7 +142,6 @@ function addPostReq(_postOb) {
 
       if (req.readyState == 4) {
         if (req.status == 200) {
-          data = JSON.parse(req.responseText); // to convert json to opject
           console.log("Done", data);
         } else {
           console.log("error", req.responseText);
@@ -314,6 +299,7 @@ function displayUsers() {
 }
 
 function toggleFollow(e) {
+  e.stopPropagation();
   console.log(e.target.innerHTML);
   var btn = e.target;
   console.log(btn.innerHTML);
@@ -398,7 +384,7 @@ function addPost(inputId) {
   posts.push(newPost);
   console.log("old", postOb);
   console.log("new", newPost);
-  addPostReq(newPost);
+  addRequest(url+"/posts",newPost);
 }
 function displayProfile(){
   document.getElementById("profile-user-image").src=user.img;
@@ -431,23 +417,23 @@ function displayTweetPage() {
   setTimeout(() => {
     var tweetId=sessionStorage.getItem('tweet')
     getPosts(`id=${tweetId}`);
-  }, 200);
+  }, 400);
   setTimeout(() => {
-    displayPosts(posts);
-  }, 300);
+    displayPosts(posts); ///posts=[currentPost]
+  }, 450);
   setTimeout(() => {
     displayWriteReply();
-  }, 350);
+  }, 500);
 
   setTimeout(() => {
     if (posts[0].commentsNum>0)  // in retweet page posts contains only current post ,>>>>>>>>>>> if tweet contains comments
           getComments('postId='+posts[0].id);// in retweet page posts contains only current post , comments?postId=1
-  }, 400);
+  }, 550);
 
   setTimeout(() => {
     if (posts[0].commentsNum>0)  
-      displayPosts(comments);// display comments 
-  }, 450);
+      displayPosts(comments);// display comments >>>>>///posts=[currentPost]
+  }, 600);
   
 }
 
@@ -469,7 +455,7 @@ function displayWriteReply() { // in tweet page added after display tweet
            />
        
          </div>
-         <button class="primary-btn reply-btn" onclick="">Tweet</button>   
+         <button class="primary-btn reply-btn" onclick="addComment('write-header')">Tweet</button>   
         </div>
     `
 }
@@ -515,5 +501,23 @@ function HandleIconPost (e) {
       }
     }
   };
+}
+
+function addComment(inputId) {
+  var currentTweet=posts[0];
+  var text = document.getElementById(inputId).value;
+  var newComment = { ...postOb }; //copy in new ob to keep the original values mutable
+  newComment.user = user;
+  newComment.text = text;
+  newComment.id = (Math.floor(Math.random() * 1000)).toString(); //generate random ,random decimal 0:1 
+  newComment.createdAt = new Date();
+  newComment.postId = currentTweet.id;
+  comments.push(newComment);
+  console.log("old", postOb);
+  console.log("new", newComment);
+  var params={};
+  params.commentsNum=currentTweet.commentsNum+1;
+  setTimeout(()=>{ addRequest(url+"/comments",newComment)} ,100);
+  setTimeout(()=>{EditPost(currentTweet.id,params)} ,250);
 }
 
