@@ -187,97 +187,8 @@ function displayPosts(_posts) {
   document.getElementsByClassName('lds-ring')[0].classList.add('hidden'); // to hide indicator //.remove("hidden") change it back
   var i = 0;
   _posts.forEach(post => {
-    document.getElementsByClassName('homepage')[0].innerHTML += `
-    <div id=${post.id} class="post-container" onclick="goToPost(${post.id})" >
-         <label class="user-id" style="display:none">${post.user.id}</label>
-         <label class="users-likes" style="display:none">${
-           post.usersLikes
-         }</label>
-         <label class="users-retweets" style="display:none">${
-           post.usersRetweets
-         }</label>
-          <img class="logged-user-image profile-img" onmouseover='displayCard(event,${
-            post.user.id
-          })' src=${post.user.img} alt="profile-img"/>
-
-         
-          <div class="post-content">
-          
-      <div class="post-text">
+    document.getElementsByClassName('homepage')[0].innerHTML += postContent(post ,i);
     
-        <div class="name-container">
-        
-          <h6 class="name-style" onmouseover='displayCard(event,${
-            post.user.id
-          })'>${post.user.name}</h6>
-                  <span class="username-style">@${post.user.userName}</span>
-        </div>
-
-        <button title="More"class="settings-btn" onclick=${'HandleIconPost(event)'} ><i class="fas fa-ellipsis-h"></i></button>    </div>
-           ${
-             post.text && `<article class="post-article">${post.text}</article>`
-           }
-          ${
-            post.image &&
-            `<img class="post-media" src=${post.image} alt="post-media"/>`
-          }
-          ${
-            post.video &&
-            `
-            <div class="post-media">
-            <iframe style="height: 350px;width:100%;border-radius:20px" src="https://www.youtube.com/embed/-p1P4fdhaF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            `
-          }
-
-
-          <footer class="post-footer" style="display: flex;">
-            <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
-              post.commentsNum
-            }</label></button>
-            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${
-      post.id
-    },${user.id})"><i class="fas fa-retweet"></i><label class="retweets-num">${
-      post.retweetsNum
-    }</label></button>
-            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${
-      post.id
-    },${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
-      post.likesNum
-    }</label></button>
-            <button class="share-btn" id="share-btn-${i}" title="Share" onclick='addBookmark(event,${
-              post.id
-            })'><i class="fas fa-sign-out-alt"
-                style="transform: rotate(-90deg);"></i></button>
-          </footer>
-
-
-           </div>
-        </div>
-    `;
-    if (post.usersLikes.includes(parseInt(user.id))) {
-      var like = document.getElementById(`like-btn-${i}`);
-      like.classList.add('liked-post-style');
-      like.title = 'dislike';
-    } else {
-      var like = document.getElementById(`like-btn-${i}`);
-      like.classList.remove('liked-post-style');
-    }
-
-    var retweet = document.getElementById(`retweet-btn-${i}`);
-    if (post.usersRetweets.includes(parseInt(user.id))) {
-      retweet.classList.add('retweeted-post-style');
-      retweet.title = 'Undo Retweet';
-    } else {
-      retweet.classList.remove('retweeted-post-style');
-    }
-    var bookmarked= document.getElementById(`share-btn-${i}`);
-    if(user.bookmarks.includes(parseInt(post.id))){
-      bookmarked.classList.add('bookmarked-post-style');
-    }
-    else{
-      bookmarked.classList.remove('bookmarked-post-style');
-    }
     i++;
   });
 }
@@ -293,19 +204,7 @@ function displayCard(e, _id) {
   card.setAttribute('id', 'card-id');
   card.setAttribute('class', 'profile-card');
   card.style.display = 'block';
-  card.innerHTML = `  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;" onclick="stopParentC">
-    <img onclick="goTo(event,'profilepage.html')" id="selected-user-img" class="logged-user-image" src=${user.img}/>
-    <h6 id="selected-user-name" class="name-style" onclick="goTo(event,'profilepage.html')">${user.name}</h6>
-    <span id="selected-user-username" class="username-style" style="color:#8899A6;" onclick="goTo(event,'profilepage.html')">${user.userName}</span>
-</div>
-<button class="card-follow-btn" onclick="toggleFollow(event)">Follow</button>
-<p id="selected-user-bio" style="clear: both;padding: 5% 0%;line-height: 1.5em;">
-${user.bio}
-</p>
-<div>
-    <h4 id="selected-user-following" style="float: left;margin-right: 10%;" onclick="goTo(event,'WhoToFollow.html')">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
-    <h4 id="selected-user-followers" onclick="goTo(event,'WhoToFollow.html')">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
-</div>`;
+  card.innerHTML =userCardContent(user);
   selectedPost.appendChild(card);
   card.onmouseleave = function () {
     selectedPost.removeChild(card);
@@ -313,7 +212,6 @@ ${user.bio}
 }
 
 function displayUsers(usersLength) {
-  console.log('********users in display********', users);
   var usersEl = document.createElement('section');
   usersEl.classList.add('users-section');
   usersEl.innerHTML = `<p class="section-title">Who to follow</p>`;
@@ -321,24 +219,9 @@ function displayUsers(usersLength) {
   usersList.forEach(user => {
     var userEl = document.createElement('div');
     userEl.classList.add('section-user');
-    userEl.innerHTML = `
-    <div class="user-image">
-      <img src=${user.img} />
-    </div>
-    <div class="who-to-follow-user" style="width: 90%">
-      <div class="user-item">
-          <div style="padding-left: 2%;">
-            <h6 class="user-name">${user.name} </h6>
-            <h6 class="user-name op">@${user.userName} </h6>
-          </div>
-          <button onclick="toggleFollow(event)" class="follow-btn secondary-btn">Follow</button>
-        </div>
-      </div>
-    </div>
-    `;
+    userEl.innerHTML = userRow(user);
     usersEl.appendChild(userEl);
   });
-  // document.getElementById('homepage').appendChild(usersEl);
   usersEl.innerHTML += `<div class="section-user"> <a class='moreFollowers' href="WhoToFollow.html">Show more</a></div>`;
   document.getElementById('asideUsers').appendChild(usersEl);
 }
@@ -471,27 +354,7 @@ function displayTweetPage() {
 }
 
 function displayWriteReply() {
-  // in tweet page added after display tweet
-  document.getElementsByClassName('homepage')[0].innerHTML += `
-         <div class="post replyContainer">
-         <img
-           class="profile-img"
-           id="profile"
-           style="border-radius: 50% ; width:60px"
-           src=${user.img}
-           alt="profile image"
-         />
-         <div class="post-right-side">
-           <input
-             id="write-header"
-             type="text"
-             placeholder="write your reply..."
-           />
-       
-         </div>
-         <button class="primary-btn tweet-btn" style="width:20%" onclick="addComment('write-header')">Reply</button>   
-        </div>
-    `;
+  document.getElementsByClassName('homepage')[0].innerHTML += writeReplysection();
 }
 function HandleIconPost(e) {
   e.stopPropagation();
@@ -649,5 +512,136 @@ function displayNews(){
 function goTo(event,pageUrl) {
   event.stopPropagation();
   location.assign(pageUrl);
+  
+}
+
+function postContent(post,i) {
+  return`
+    <div id=${post.id} class="post-container" onclick="goToPost(${post.id})" >
+         <label class="user-id" style="display:none">${post.user.id}</label>
+         <label class="users-likes" style="display:none">${
+           post.usersLikes
+         }</label>
+         <label class="users-retweets" style="display:none">${
+           post.usersRetweets
+         }</label>
+          <img class="logged-user-image profile-img" onmouseover='displayCard(event,${
+            post.user.id
+          })' src=${post.user.img} alt="profile-img"/>
+
+         
+          <div class="post-content">
+          
+      <div class="post-text">
+    
+        <div class="name-container">
+        
+          <h6 class="name-style" onmouseover='displayCard(event,${
+            post.user.id
+          })'>${post.user.name}</h6>
+                  <span class="username-style">@${post.user.userName}</span>
+        </div>
+
+        <button title="More"class="settings-btn" onclick=${'HandleIconPost(event)'} ><i class="fas fa-ellipsis-h"></i></button>    </div>
+           ${
+             post.text && `<article class="post-article">${post.text}</article>`
+           }
+          ${
+            post.image &&
+            `<img class="post-media" src=${post.image} alt="post-media"/>`
+          }
+          ${
+            post.video &&
+            `
+            <div class="post-media">
+            <iframe style="height: 350px;width:100%;border-radius:20px" src="https://www.youtube.com/embed/-p1P4fdhaF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            `
+          }
+
+
+          <footer class="post-footer" style="display: flex;">
+            <button class="reply-btn" title="Reply"><i class="far fa-comment"></i><label>${
+              post.commentsNum
+            }</label></button>
+            <button class="retweet-btn" id="retweet-btn-${i}" title="Retweet" onclick="retweetPost(event,${
+      post.id
+    },${user.id})"><i class="fas fa-retweet"></i><label class="retweets-num">${
+      post.retweetsNum
+    }</label></button>
+            <button class="like-btn" id="like-btn-${i}" title="Like" onclick="likePost(event,${
+      post.id
+    },${user.id})"><i class="fas fa-heart"></i><label class="likes-num">${
+      post.likesNum
+    }</label></button>
+            <button class="share-btn" id="share-btn-${i}" title="Share" onclick='addBookmark(event,${
+              post.id
+            })'><i class="fas fa-sign-out-alt"
+                style="transform: rotate(-90deg);"></i></button>
+          </footer>
+
+
+           </div>
+        </div>
+    `;
+  
+}
+
+function userCardContent(user) {
+  return`  <div style="float:left;display: flex;flex-direction: column;line-height: 1.5em;" onclick="stopParentC">
+  <img onclick="goTo(event,'profilepage.html')" id="selected-user-img" class="logged-user-image" src=${user.img}/>
+  <h6 id="selected-user-name" class="name-style" onclick="goTo(event,'profilepage.html')">${user.name}</h6>
+  <span id="selected-user-username" class="username-style" style="color:#8899A6;" onclick="goTo(event,'profilepage.html')">${user.userName}</span>
+</div>
+<button class="card-follow-btn" onclick="toggleFollow(event)">Follow</button>
+<p id="selected-user-bio" style="clear: both;padding: 5% 0%;line-height: 1.5em;">
+${user.bio}
+</p>
+<div>
+  <h4 id="selected-user-following" style="float: left;margin-right: 10%;" onclick="goTo(event,'WhoToFollow.html')">${user.following}<span style="color:#8899A6;font-weight: lighter;"> Following</span></h4>
+  <h4 id="selected-user-followers" onclick="goTo(event,'WhoToFollow.html')">${user.followers}<span style="color:#8899A6;font-weight: lighter;"> Followers</span></h4>
+</div>`
+  
+}
+
+function writeReplysection() {
+  return`
+         <div class="post replyContainer">
+         <img
+           class="profile-img"
+           id="profile"
+           style="border-radius: 50% ; width:60px"
+           src=${user.img}
+           alt="profile image"
+         />
+         <div class="post-right-side">
+           <input
+             id="write-header"
+             type="text"
+             placeholder="write your reply..."
+           />
+       
+         </div>
+         <button class="primary-btn tweet-btn" style="width:20%" onclick="addComment('write-header')">Reply</button>   
+        </div>
+    `
+}
+
+function userRow(user) {
+ return `
+    <div class="user-image">
+      <img src=${user.img} />
+    </div>
+    <div class="who-to-follow-user" style="width: 90%">
+      <div class="user-item">
+          <div style="padding-left: 2%;">
+            <h6 class="user-name">${user.name} </h6>
+            <h6 class="user-name op">@${user.userName} </h6>
+          </div>
+          <button onclick="toggleFollow(event)" class="follow-btn secondary-btn">Follow</button>
+        </div>
+      </div>
+    </div>
+    `
   
 }
