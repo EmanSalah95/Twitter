@@ -121,7 +121,8 @@ header .profile .profile-picture {
 }
 
 header .profile .profile-picture img {
-  width: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
 
@@ -728,4 +729,13 @@ label {
   padding-left: 7px;
   color: #494d52;
   font-size: 20px;
+}
+
+.news-content{
+  margin: 5px 0;
+  width: 100%;
+  padding: 5px 16px;
+}
+.news-content:hover{
+  background-color: rgba(255, 255, 255, 0.02);
 }
