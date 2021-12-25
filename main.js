@@ -188,6 +188,29 @@ function displayPosts(_posts) {
   var i = 0;
   _posts.forEach(post => {
     document.getElementsByClassName('homepage')[0].innerHTML += postContent(post ,i);
+    if (post.usersLikes.includes(parseInt(user.id))) {
+      var like = document.getElementById(`like-btn-${i}`);
+      like.classList.add('liked-post-style');
+      like.title = 'dislike';
+    } else {
+      var like = document.getElementById(`like-btn-${i}`);
+      like.classList.remove('liked-post-style');
+    }
+
+    var retweet = document.getElementById(`retweet-btn-${i}`);
+    if (post.usersRetweets.includes(parseInt(user.id))) {
+      retweet.classList.add('retweeted-post-style');
+      retweet.title = 'Undo Retweet';
+    } else {
+      retweet.classList.remove('retweeted-post-style');
+    }
+    var bookmarked= document.getElementById(`share-btn-${i}`);
+    if(user.bookmarks.includes(parseInt(post.id))){
+      bookmarked.classList.add('bookmarked-post-style');
+    }
+    else{
+      bookmarked.classList.remove('bookmarked-post-style');
+    }
     
     i++;
   });
