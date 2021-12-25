@@ -1,6 +1,12 @@
 var req = new XMLHttpRequest();
 var url = 'http://localhost:3000';
 
+function checkLoggedIn() {
+    // var loggeduserId=localStorage.getItem('currentUser');
+    if (localStorage.getItem('currentUser'))
+          location.replace('../index.html'); 
+}
+
 // Start function to handle sign in and open sign in form in new window
 function HandleSign () 
 {
@@ -91,13 +97,10 @@ function CompleteSignIn() {
           console.log(users);
           for (var i =0 ; i < users.length ;  i++) {
                 if (fieldValue == users[i].email && usrName == users[i].userName)
-                {
-                    // window.open("https://fontawesome.com/v5.15/icons/times?style=solid" , "_self")
-                    
+                {                    
                     console.log("founded user", users[i].id);
                     HamndleStoreData(users[i].id);
-                    location.assign('../index.html');
-                    // localStorage.setItem ("currentUser", users[i].id)
+                    location.replace('../index.html');
                     break ;
                 }
 

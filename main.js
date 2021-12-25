@@ -32,6 +32,8 @@ function loadPage(page) {
   var loggeduserId=localStorage.getItem('currentUser')? 
        localStorage.getItem('currentUser'):
        sessionStorage.getItem('currentUser');
+  if (!loggeduserId)
+       location.replace('./Sign-in/sign.html'); 
   getUser(loggeduserId); //set global user object of current user
   if (page == 'home') {
     setTimeout(() => {
@@ -612,6 +614,12 @@ function displayBookmarks() {
     });
 
     displayPosts(bmPosts); // display this array of bookmarke posts
+}
+
+function logout() {
+  localStorage.clear();
+  location.replace('./Sign-in/sign.html');
+  
 }
 
 function displayNews(){
